@@ -1,6 +1,6 @@
 nltk
 spacy==2.3.5
-torch==1.7.0
+torch
 tqdm
 tensorboard
-sklearn
+scikit-learn
