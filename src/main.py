@@ -31,5 +31,6 @@ if __name__ == "__main__":
     device = "cpu"
     trainer = Trainer(corpus, config, device)
     trainer.train(train_loader)
-    re_loss, ner_loss, ner_f1, re_f1 = trainer.evaluate(test_loader)
-    print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\nRe f1: {re_f1}")
+    re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
+    print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+          f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
