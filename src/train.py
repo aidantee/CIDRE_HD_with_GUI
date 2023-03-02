@@ -5,9 +5,6 @@ import torch.nn as nn
 import numpy as np
 import random
 import os
-
-from tqdm import tqdm_notebook
-
 from torch.utils.tensorboard import SummaryWriter
 
 from torch.utils.data import DataLoader
@@ -40,12 +37,11 @@ if __name__ == "__main__":
     seed_all(seed)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default=str, help="path to the config.json file", type=str)
+    parser.add_argument("--config", default="./data/config.json", help="path to the config.json file", type=str)
 
     args = parser.parse_args()
     config_file_path = "data/config.json"
     config = CDRConfig.from_json_file(config_file_path)
-
     corpus = CDRCorpus(config)
 
     print("Loading vocabs .....")

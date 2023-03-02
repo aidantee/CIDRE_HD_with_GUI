@@ -51,7 +51,10 @@ class CDRCorpus:
             "all_ner_labels.pkl",
             "labels.pkl",
         ]
-
+        self.word_vocab = dict()
+        self.char_vocab = dict()
+        self.rel_vocab = dict()
+        self.pos_vocab = dict()
         self.list_vocab_names = ["word_vocab.json", "rel_vocab.json", "pos_vocab.json", "char_vocab.json"]
 
     def load_vocab(self, file_path):
@@ -444,7 +447,6 @@ class CDRCorpus:
 
         Args:
             file_path ([type]): [description]
-            mesh_path ([type], optional): [description]. Defaults to None.
 
         Returns:
             [type]: [description]
