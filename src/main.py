@@ -38,10 +38,14 @@ if __name__ == "__main__":
     test_loader = DataLoader(
         test_dataset, batch_size=config.batch_size, shuffle=False, collate_fn=collator.collate
     )
-    # device = "cuda"
-    device = "cpu"
+    device = "cuda"
+    # device = "cpu"
     trainer = Trainer(corpus, config, device)
     trainer.train(train_loader)
     re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
     print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
           f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
+    with open("result.txt", "a") as outfile:
+        outfile.write("\n\nRESULT")
+        outfile.write(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+                      f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}" + "\n")
