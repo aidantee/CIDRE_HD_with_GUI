@@ -2,3 +2,4 @@
 **/__pycache__/
 **/.idea/
 src/data/prepared_data/
+**/*.ipynb
