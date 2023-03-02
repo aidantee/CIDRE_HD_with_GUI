@@ -11,6 +11,15 @@ from typing import Any, Dict, List, Tuple, Union
 import numpy as np
 from utils.spacy_utils import nlp
 
+
+SOME_SPECIFIC_MENTIONS = [
+    "tyrosine-methionine-aspartate-aspartate",
+    "anemia/thrombocytopenia/emesis/rash",
+    "metoprolol/alpha-hydroxymetoprolol",
+    "glutamate/N-methyl-D-aspartate",
+    "cyclosporine-and-prednisone-treated",
+    "platinum/paclitaxel-refractory",
+]
 ner_vocab = {"O": 0, "B_Chemical": 1, "I_Chemical": 2, "B_Disease": 3, "I_Disease": 4}
 ner_idx2label = {0: "O", 1: "B_Chemical", 2: "I_Chemical", 3: "B_Disease", 4: "I_Disease"}
 # idx2word = {k: v for v, k in word_vocab.items()}
@@ -382,6 +391,7 @@ class CDRCorpus:
                 token_end = token_start + len(token)
                 if token_start >= start and token_end <= end:
                     entity_mapping[key].append(token)
+            not_found = (len(entity_mapping[key]) == 0)
             if len(entity_mapping[key]) == 0:
                 for token in doc:
                     token_start = token.idx
@@ -389,6 +399,33 @@ class CDRCorpus:
                     if token_start <= start and token_end >= end and mention in token.text:
                         entity_mapping[key].append(token)
                         break
+            if not_found:
+                previous_output = []
+                for token in doc:
+                    token_start = token.idx
+                    token_end = token_start + len(token)
+                    if token_start >= start and token_end <= end:
+                        previous_output.append(token)
+                    elif (
+                            token_start >= start - offset_span and token_end <= end + offset_span) and mention in token.text:
+                        previous_output.append(token)
+                    # hard code for some specific mention
+                    elif token.text in SOME_SPECIFIC_MENTIONS:
+                        previous_output.append(token)
+                if previous_output != entity_mapping[key]:
+                    with open("./invalid_case.txt", "a") as outfile:
+                        outfile.write("_"*30)
+                        outfile.write(str(en_anno))
+                        outfile.write(pud_id)
+                        outfile.write(abstract[start - 50 : end + 50])
+                        outfile.write("*"*30)
+                        outfile.write(str(previous_output))
+                        outfile.write("*"*30)
+                        outfile.write(str(entity_mapping[key]))
+                        outfile.write("*"*30)
+                        outfile.write("_"*30)
+
+
             try:
                 assert entity_mapping[key] != []
             except:
