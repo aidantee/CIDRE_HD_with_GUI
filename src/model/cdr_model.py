@@ -1,10 +1,13 @@
 import torch
 import torch.nn as nn
+from allennlp.modules.elmo import Elmo
+
+elmo_options_file = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/contributed/pubmed/elmo_2x4096_512_2048cnn_2xhighway_options.json"
+elmo_weight_file = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/contributed/pubmed/elmo_2x4096_512_2048cnn_2xhighway_weights_PubMed_only.hdf5"
 
 
 class GraphAttnModule(nn.Module):
     def __init__(self, n_heads, input_hidden_size):
-
         super(GraphAttnModule, self).__init__()
         self.weight_matrix = nn.Linear(input_hidden_size, input_hidden_size, bias=False)
         self.attn_matrix = nn.Parameter(torch.randn(n_heads, (2 * input_hidden_size) // n_heads, 1))
@@ -53,31 +56,31 @@ class GraphAttnModule(nn.Module):
 
 class GraphEncoder(nn.Module):
     def __init__(
-        self,
-        time_step,
-        edge_vocab_size,
-        pos_vocab_size,
-        char_vocab_size,
-        word_vocab_size,
-        contextual_word_embedding_dim,
-        edge_embedding_dim,
-        pos_embedding_dim,
-        combined_embedding_dim,
-        lstm_hidden_size,
-        hidden_size,
-        in_attn_heads,
-        out_attn_heads,
-        use_char,
-        use_pos,
-        use_word,
-        use_state,
-        kernel_size=5,
-        word_embedding_dim=200,
-        n_filters=30,
-        char_embedding_dim=30,
-        use_attn=True,
-        device=torch.device("cuda:0"),
-        drop_out=0.2,
+            self,
+            time_step,
+            edge_vocab_size,
+            pos_vocab_size,
+            char_vocab_size,
+            word_vocab_size,
+            contextual_word_embedding_dim,
+            edge_embedding_dim,
+            pos_embedding_dim,
+            combined_embedding_dim,
+            lstm_hidden_size,
+            hidden_size,
+            in_attn_heads,
+            out_attn_heads,
+            use_char,
+            use_pos,
+            use_word,
+            use_state,
+            kernel_size=5,
+            word_embedding_dim=200,
+            n_filters=30,
+            char_embedding_dim=30,
+            use_attn=True,
+            device: str = "cpu",
+            drop_out=0.2,
     ):
 
         super(GraphEncoder, self).__init__()
@@ -351,17 +354,18 @@ class GraphEncoder(nn.Module):
 
 class GraphStateLSTM(nn.Module):
     def __init__(
-        self,
-        relation_classes,
-        ner_classes,
-        encoder,
-        entity_hidden_size,
-        distance_embedding_dim,
-        use_state,
-        use_ner=False,
-        distance_thresh=0,
-        max_distance=600,
-        drop_out=0.2,
+            self,
+            relation_classes,
+            ner_classes,
+            encoder,
+            entity_hidden_size,
+            distance_embedding_dim,
+            use_state,
+            use_ner=False,
+            distance_thresh=0,
+            max_distance=600,
+            drop_out=0.2,
+            device: str = "cpu"
     ):
 
         super(GraphStateLSTM, self).__init__()
@@ -397,6 +401,8 @@ class GraphStateLSTM(nn.Module):
         if self.use_ner:
             self.linear_ner_hidden = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
             self.linear_ner_out = nn.Linear(entity_hidden_size, ner_classes)
+        self.elmo = Elmo(options_file=elmo_options_file, weight_file=elmo_weight_file, num_output_representations=1)
+        self.device = device
 
     def collect_entity_by_indices(self, representations, positions):
 
@@ -411,13 +417,11 @@ class GraphStateLSTM(nn.Module):
         return collected_tensor
 
     def forward(self, inputs):
-
         (
             token_ids_tensor,
             token_ids_mask_tensor,
             pos_ids_tensor,
             char_ids_tensor,
-            elmo_tensor,
             in_nodes_idx_tensor,
             in_nodes_mask_tensor,
             out_nodes_idx_tensor,
@@ -431,8 +435,10 @@ class GraphStateLSTM(nn.Module):
             dis_entity_map_tensor,
             dis_entity_map_mask_tensor,
             distance,
+            elmo_input_ids
         ) = inputs
 
+        elmo_tensor = self.elmo(elmo_input_ids)['elmo_representations'][0]
         node_cell, node_hidden, lstm_output = self.encoder(
             [
                 elmo_tensor,
@@ -480,8 +486,12 @@ class GraphStateLSTM(nn.Module):
         # dis_entities = [batch_size, max_mentions, feature_dim]
 
         bs, max_mentions, feature_dim = chem_entities.shape
-        chem_entities_indices_mask = torch.sum(chem_entity_map_mask_tensor, dim=-1).type(torch.cuda.LongTensor)
-        dis_entities_indices_mask = torch.sum(dis_entity_map_mask_tensor, dim=-1).type(torch.cuda.LongTensor)
+        if self.device == "cuda":
+            chem_entities_indices_mask = torch.sum(chem_entity_map_mask_tensor, dim=-1).type(torch.cuda.LongTensor)
+            dis_entities_indices_mask = torch.sum(dis_entity_map_mask_tensor, dim=-1).type(torch.cuda.LongTensor)
+        else:
+            chem_entities_indices_mask = torch.sum(chem_entity_map_mask_tensor, dim=-1).type(torch.LongTensor)
+            dis_entities_indices_mask = torch.sum(dis_entity_map_mask_tensor, dim=-1).type(torch.LongTensor)
 
         concat_entities = torch.cat(
             [
@@ -512,7 +522,10 @@ class GraphStateLSTM(nn.Module):
 
         concat_indices_mask = concat_indices_mask.view(bs, max_mentions * max_mentions)
         # concat_indices_mask = [bs, max_mentions * max_mentions]
-        distance_mask = (distance >= self.distance_thresh).type(torch.cuda.LongTensor)
+        if self.device == "cuda":
+            distance_mask = (distance >= self.distance_thresh).type(torch.cuda.LongTensor)
+        else:
+            distance_mask = (distance >= self.distance_thresh).type(torch.LongTensor)
         distance_mask = distance_mask.view(bs, max_mentions * max_mentions)
         score = self.linear_score(self.drop_out(concat_entities))
         # score = [bs, max_mentions * max_mentions, 2]

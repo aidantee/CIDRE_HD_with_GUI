@@ -16,7 +16,7 @@ from utils.metrics import compute_rel_f1, compute_NER_f1_macro, decode_ner, comp
 
 
 class Trainer:
-    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str):
+    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, pos_weight: float = 1):
         self.corpus = corpus
         self.config = config
         self.encoder = GraphEncoder(
@@ -40,6 +40,7 @@ class Trainer:
             use_pos=config.use_pos,
             use_word=config.use_word,
             use_state=config.use_state,
+            device=device
         )
         self.model = GraphStateLSTM(
             relation_classes=config.relation_classes,
@@ -52,9 +53,10 @@ class Trainer:
             use_state=config.use_state,
             drop_out=config.drop_out,
             distance_thresh=config.distance_thresh,
+            device=device
         )
         self.device = device
-        self.weight_label = torch.Tensor([1, config.pos_weight])
+        self.weight_label = torch.Tensor([1, pos_weight])
         self.optimizer = optim.AdamW(self.model.parameters(), lr=config.lr, weight_decay=0.001)
         self.scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer, gamma=0.5)
         if device == "cuda":
@@ -149,6 +151,7 @@ class Trainer:
             train_ner_loss = []
             self.scheduler.step()
             if dev_loader is not None:
+                # TODO eval
                 pass
 
     def save_model(self):
