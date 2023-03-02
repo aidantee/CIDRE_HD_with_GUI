@@ -11,15 +11,6 @@ from typing import Any, Dict, List, Tuple, Union
 import numpy as np
 from utils.spacy_utils import nlp
 
-# SOME_SPECIFIC_MENTIONS = [
-#     "tyrosine-methionine-aspartate-aspartate",
-#     "anemia/thrombocytopenia/emesis/rash",
-#     "metoprolol/alpha-hydroxymetoprolol",
-#     "glutamate/N-methyl-D-aspartate",
-#     "cyclosporine-and-prednisone-treated",
-#     "platinum/paclitaxel-refractory",
-# ]
-
 ner_vocab = {"O": 0, "B_Chemical": 1, "I_Chemical": 2, "B_Disease": 3, "I_Disease": 4}
 ner_idx2label = {0: "O", 1: "B_Chemical", 2: "I_Chemical", 3: "B_Disease", 4: "I_Disease"}
 # idx2word = {k: v for v, k in word_vocab.items()}

@@ -15,6 +15,8 @@ from dataset.cdr_dataset import CDRDataset
 from corpus.cdr_corpus import CDRCorpus
 from model.cdr_model import GraphEncoder, GraphStateLSTM
 from utils.metrics import compute_rel_f1, compute_NER_f1_macro, decode_ner, compute_results
+from dataset.utils import get_cdr_dataset
+from dataset.collator import Collator
 from utils.utils import get_mean, seed_all
 
 from sklearn.model_selection import train_test_split
@@ -45,248 +47,23 @@ if __name__ == "__main__":
     corpus = CDRCorpus(config)
 
     print("Loading vocabs .....")
-    corpus.load_all_vocabs(config.saved_folder_path, config.model_type)
+    corpus.load_all_vocabs(config.saved_folder_path)
 
-    print("Loading generated features for train .....")
-    (
-        train_all_doc_token_ids,
-        train_all_in_nodes_idx,
-        train_all_out_nodes_idx,
-        train_all_in_edge_label_ids,
-        train_all_out_edge_label_ids,
-        train_all_doc_pos_ids,
-        train_all_doc_char_ids,
-        train_all_entity_mapping,
-        train_all_ner_labels,
-        train_elmo_tensor_dict,
-        train_labels,
-    ) = corpus.load_all_features_for_one_dataset(config.saved_folder_path, config.model_type, "train")
-
-    print("Loading generated features for dev.....")
-    (
-        dev_all_doc_token_ids,
-        dev_all_in_nodes_idx,
-        dev_all_out_nodes_idx,
-        dev_all_in_edge_label_ids,
-        dev_all_out_edge_label_ids,
-        dev_all_doc_pos_ids,
-        dev_all_doc_char_ids,
-        dev_all_entity_mapping,
-        dev_all_ner_labels,
-        dev_elmo_tensor_dict,
-        dev_labels,
-    ) = corpus.load_all_features_for_one_dataset(config.saved_folder_path, config.model_type, "dev")
-
-    print("Loading generated features for test .....")
-    (
-        test_all_doc_token_ids,
-        test_all_in_nodes_idx,
-        test_all_out_nodes_idx,
-        test_all_in_edge_label_ids,
-        test_all_out_edge_label_ids,
-        test_all_doc_pos_ids,
-        test_all_doc_char_ids,
-        test_all_entity_mapping,
-        test_all_ner_labels,
-        test_elmo_tensor_dict,
-        test_labels,
-    ) = corpus.load_all_features_for_one_dataset(config.saved_folder_path, config.model_type, "test")
-
-    dev_dataset = None
-
-    if config.use_full:
-        if config.model_type == "full":
-            train_all_doc_token_ids = dict(train_all_doc_token_ids, **dev_all_doc_token_ids)
-            train_all_in_nodes_idx = dict(train_all_in_nodes_idx, **dev_all_in_nodes_idx)
-            train_all_out_nodes_idx = dict(train_all_out_nodes_idx, **dev_all_out_nodes_idx)
-            train_all_in_edge_label_ids = dict(train_all_in_edge_label_ids, **dev_all_in_edge_label_ids)
-            train_all_out_edge_label_ids = dict(train_all_out_edge_label_ids, **dev_all_out_edge_label_ids)
-            train_all_doc_pos_ids = dict(train_all_doc_pos_ids, **dev_all_doc_pos_ids)
-            train_all_doc_char_ids = dict(train_all_doc_char_ids, **dev_all_doc_char_ids)
-            train_elmo_tensor_dict = dict(train_elmo_tensor_dict, **dev_elmo_tensor_dict)
-            train_all_entity_mapping = dict(train_all_entity_mapping, **dev_all_entity_mapping)
-            train_all_ner_labels = dict(train_all_ner_labels, **dev_all_ner_labels)
-
-        elif config.model_type == "inter":
-
-            assert len(dev_all_doc_token_ids) == len(dev_elmo_tensor_dict)
-
-            for key in tqdm(dev_all_doc_token_ids.keys()):
-                train_all_doc_token_ids[key] = dev_all_doc_token_ids[key]
-                train_all_in_nodes_idx[key] = dev_all_in_nodes_idx[key]
-                train_all_out_nodes_idx[key] = dev_all_out_nodes_idx[key]
-                train_all_in_edge_label_ids[key] = dev_all_in_edge_label_ids[key]
-                train_all_out_edge_label_ids[key] = dev_all_out_edge_label_ids[key]
-                train_all_doc_pos_ids[key] = dev_all_doc_pos_ids[key]
-                train_all_doc_char_ids[key] = dev_all_doc_char_ids[key]
-                train_elmo_tensor_dict[key] = dev_elmo_tensor_dict[key]
-                train_all_entity_mapping[key] = dev_all_entity_mapping[key]
-                train_all_ner_labels[key] = dev_all_ner_labels[key]
-
-            assert len(train_labels) + len(dev_labels) == len(train_all_doc_token_ids)
-
-        # additional_train_labels, new_dev_labels = train_test_split(dev_labels, test_size=0.1, random_state = seed)
-
-        train_dataset = CDRDataset(
-            train_all_doc_token_ids,
-            train_all_in_nodes_idx,
-            train_all_out_nodes_idx,
-            train_all_in_edge_label_ids,
-            train_all_out_edge_label_ids,
-            train_all_doc_pos_ids,
-            train_all_doc_char_ids,
-            train_elmo_tensor_dict,
-            train_all_entity_mapping,
-            train_all_ner_labels,
-            train_labels + dev_labels,
-            config.model_type,
-        )
-
-        # dev_dataset = CDRDataset(
-        #     dev_all_doc_token_ids,
-        #     dev_all_in_nodes_idx,
-        #     dev_all_out_nodes_idx,
-        #     dev_all_in_edge_label_ids,
-        #     dev_all_out_edge_label_ids,
-        #     dev_all_doc_pos_ids,
-        #     dev_all_doc_char_ids,
-        #     dev_elmo_tensor_dict,
-        #     dev_all_entity_mapping,
-        #     dev_all_ner_labels,
-        #     new_dev_labels,
-        #     config.model_type
-        # )
-
-        # dev_dataset.set_vocabs(
-        #     corpus.word_vocab,
-        #     corpus.rel_vocab,
-        #     corpus.pos_vocab,
-        #     corpus.char_vocab,
-        # )
-
-    else:
-        train_dataset = CDRDataset(
-            train_all_doc_token_ids,
-            train_all_in_nodes_idx,
-            train_all_out_nodes_idx,
-            train_all_in_edge_label_ids,
-            train_all_out_edge_label_ids,
-            train_all_doc_pos_ids,
-            train_all_doc_char_ids,
-            train_elmo_tensor_dict,
-            train_all_entity_mapping,
-            train_all_ner_labels,
-            train_labels,
-            config.model_type,
-        )
-
-        dev_dataset = CDRDataset(
-            dev_all_doc_token_ids,
-            dev_all_in_nodes_idx,
-            dev_all_out_nodes_idx,
-            dev_all_in_edge_label_ids,
-            dev_all_out_edge_label_ids,
-            dev_all_doc_pos_ids,
-            dev_all_doc_char_ids,
-            dev_elmo_tensor_dict,
-            dev_all_entity_mapping,
-            dev_all_ner_labels,
-            dev_labels,
-            config.model_type,
-        )
-
-        dev_dataset.set_vocabs(
-            corpus.word_vocab,
-            corpus.rel_vocab,
-            corpus.pos_vocab,
-            corpus.char_vocab,
-        )
-
-    test_dataset = CDRDataset(
-        test_all_doc_token_ids,
-        test_all_in_nodes_idx,
-        test_all_out_nodes_idx,
-        test_all_in_edge_label_ids,
-        test_all_out_edge_label_ids,
-        test_all_doc_pos_ids,
-        test_all_doc_char_ids,
-        test_elmo_tensor_dict,
-        test_all_entity_mapping,
-        test_all_ner_labels,
-        test_labels,
-        config.model_type,
-    )
-
-    train_dataset.set_vocabs(
-        corpus.word_vocab,
-        corpus.rel_vocab,
-        corpus.pos_vocab,
-        corpus.char_vocab,
-    )
-
-    test_dataset.set_vocabs(
-        corpus.word_vocab,
-        corpus.rel_vocab,
-        corpus.pos_vocab,
-        corpus.char_vocab,
-    )
+    train_dataset = get_cdr_dataset(config.saved_folder_path, "train")
+    dev_dataset = get_cdr_dataset(config.saved_folder_path, "dev")
+    test_dataset = get_cdr_dataset(config.saved_folder_path, "test")
+    collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
 
     train_loader = DataLoader(
-        train_dataset, batch_size=config.batch_size, shuffle=True, collate_fn=train_dataset.collate_fn
+        train_dataset, batch_size=config.batch_size, shuffle=True, collate_fn=collator.collate
     )
     test_loader = DataLoader(
-        test_dataset, batch_size=config.batch_size, shuffle=False, collate_fn=test_dataset.collate_fn
+        test_dataset, batch_size=config.batch_size, shuffle=False, collate_fn=collator.collate
     )
-
     if dev_dataset is not None:
         dev_loader = DataLoader(
-            dev_dataset, batch_size=config.batch_size, shuffle=False, collate_fn=dev_dataset.collate_fn
+            dev_dataset, batch_size=config.batch_size, shuffle=False, collate_fn=collator.collate
         )
-
-    encoder = GraphEncoder(
-        time_step=config.time_step,
-        word_vocab_size=len(corpus.word_vocab),
-        edge_vocab_size=len(corpus.rel_vocab),
-        pos_vocab_size=len(corpus.pos_vocab),
-        char_vocab_size=len(corpus.char_vocab),
-        contextual_word_embedding_dim=config.elmo_hidden_size,
-        word_embedding_dim=config.word_embedding_dim,
-        edge_embedding_dim=config.rel_embedding_dim,
-        pos_embedding_dim=config.pos_embedding_dim,
-        combined_embedding_dim=config.combined_embedding_dim,
-        in_attn_heads=config.in_attn_heads,
-        out_attn_heads=config.out_attn_heads,
-        use_attn=config.use_attn,
-        drop_out=config.drop_out,
-        hidden_size=config.encoder_hidden_size,
-        lstm_hidden_size=config.lstm_hidden_size,
-        use_char=config.use_char,
-        use_pos=config.use_pos,
-        use_word=config.use_word,
-        use_state=config.use_state,
-    )
-
-    word2vec = corpus.load_numpy(config.word2vec_path)
-    encoder.word_embedding.from_pretrained(torch.FloatTensor(word2vec), freeze=True)
-
-    model = GraphStateLSTM(
-        relation_classes=config.relation_classes,
-        ner_classes=config.ner_classes,
-        encoder=encoder,
-        entity_hidden_size=config.entity_hidden_size,
-        max_distance=config.max_distance,
-        distance_embedding_dim=config.distance_embedding_dim,
-        use_ner=config.use_ner,
-        use_state=config.use_state,
-        drop_out=config.drop_out,
-        distance_thresh=config.distance_thresh,
-    )
-
-    print(model)
-
-    model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
-
-    model.cuda()
     weighted = torch.Tensor([1, 3.65]).cuda()
     optimizer = optim.AdamW(model.parameters(), lr=config.lr, weight_decay=0.001)
 
