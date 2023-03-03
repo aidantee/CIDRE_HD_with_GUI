@@ -132,6 +132,7 @@ class Trainer:
                 if train_step % self.config.gradient_accumalation == 0:
                     nn.utils.clip_grad_norm(self.model.parameters(), self.config.gradient_clipping)
                     self.optimizer.step()
+                    self.scheduler.step()
                     self.optimizer.zero_grad()
                     train_interval_re_loss.append(re_loss.item())
                     train_interval_ner_loss.append(ner_loss.item())
@@ -150,7 +151,6 @@ class Trainer:
             print(f"Ner loss: {np.mean(train_ner_loss)}")
             train_re_loss = []
             train_ner_loss = []
-            self.scheduler.step()
             if dev_loader is not None:
                 # TODO eval
                 pass
