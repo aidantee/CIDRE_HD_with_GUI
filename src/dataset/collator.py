@@ -1,6 +1,6 @@
 import torch
 from dataset.utils import pad_sequences, pad_characters, pad_entity, pad_nodes
-from dataset.constansts import NER_VOCAB
+from dataset.constants import NER_VOCAB
 from allennlp.modules.elmo import batch_to_ids
 
 

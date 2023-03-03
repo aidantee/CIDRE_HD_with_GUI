@@ -1,5 +1,5 @@
 from torch.utils.data import Dataset
-from dataset.constansts import NER_VOCAB
+from dataset.constants import NER_VOCAB
 
 
 class CDRDataset(Dataset):
@@ -14,11 +14,7 @@ class CDRDataset(Dataset):
             all_char_ids,
             all_entity_mapping,
             all_ner_label_ids,
-            labels,
-            word_vocab,
-            char_vocab,
-            rel_vocab,
-            pos_vocab
+            labels
     ):
 
         super(CDRDataset, self).__init__()
@@ -26,8 +22,6 @@ class CDRDataset(Dataset):
         self.pos_vocab = pos_vocab
         self.rel_vocab = rel_vocab
         self.char_vocab = char_vocab
-        self.word_vocab = word_vocab
-        self.idx2word = {k: v for v, k in word_vocab.items()}
         self.all_doc_token_ids = all_doc_token_ids
 
         self.all_in_nodes_idx = all_in_nodes_idx
