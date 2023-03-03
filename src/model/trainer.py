@@ -76,7 +76,8 @@ class Trainer:
         ner_target_list = []
         ner_pred_list = []
         with torch.no_grad():
-            for batch in dataloader:
+            print("Start evaluate")
+            for batch in tqdm(dataloader):
                 if self.device == "cuda":
                     batch = [elem.cuda() if isinstance(elem, Tensor) else elem for elem in batch]
                     inputs = batch[:-2]
@@ -103,8 +104,8 @@ class Trainer:
                     re_losses.append(re_loss.item())
                     ner_losses.append(ner_loss.item())
         ner_f1 = compute_NER_f1_macro(ner_pred_list, ner_target_list)
-        re_p, re_r, re_f1, _ = compute_results(predict_list, target_list)
-        return np.mean(re_losses), np.mean(ner_losses), ner_f1, re_f1
+        re_precision, re_recall, re_f1, _ = compute_results(predict_list, target_list)
+        return np.mean(re_losses), np.mean(ner_losses), ner_f1, re_precision, re_recall, re_f1
 
     def train(self, train_loader: DataLoader, dev_loader: Optional[DataLoader] = None):
         train_step = 0
