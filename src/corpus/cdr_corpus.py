@@ -414,16 +414,16 @@ class CDRCorpus:
                         previous_output.append(token)
                 if previous_output != entity_mapping[key]:
                     with open("./invalid_case.txt", "a") as outfile:
-                        outfile.write("_"*30)
-                        outfile.write(str(en_anno))
-                        outfile.write(pud_id)
-                        outfile.write(abstract[start - 50 : end + 50])
-                        outfile.write("*"*30)
-                        outfile.write(str(previous_output))
-                        outfile.write("*"*30)
-                        outfile.write(str(entity_mapping[key]))
-                        outfile.write("*"*30)
-                        outfile.write("_"*30)
+                        outfile.write("_"*30+"\n")
+                        outfile.write(str(en_anno)+"\n")
+                        outfile.write(pud_id+"\n")
+                        outfile.write(abstract[start - 50 : end + 50]+"\n")
+                        outfile.write("*"*30+"\n")
+                        outfile.write(str(previous_output)+"\n")
+                        outfile.write("*"*30+"\n")
+                        outfile.write(str(entity_mapping[key])+"\n")
+                        outfile.write("*"*30+"\n")
+                        outfile.write("_"*30+"\n")
 
 
             try:

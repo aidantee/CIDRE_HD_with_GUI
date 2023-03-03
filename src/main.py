@@ -1,5 +1,6 @@
 import argparse
 
+from utils.lr_scheduler import get_cosine_warm_up_lr_scheduler
 from corpus.cdr_corpus import CDRCorpus
 from dataset.cdr_dataset import CDRDataset
 from config.cdr_config import CDRConfig
@@ -30,6 +31,8 @@ if __name__ == "__main__":
     # device = "cuda"
     device = "cpu"
     trainer = Trainer(corpus, config, device)
+    trainer.scheduler = get_cosine_warm_up_lr_scheduler(trainer.optimizer, len(train_loader) * trainer.config.epochs,
+                                                        0.1)
     trainer.train(train_loader)
     re_loss, ner_loss, ner_f1, re_f1 = trainer.evaluate(test_loader)
     print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\nRe f1: {re_f1}")

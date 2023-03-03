@@ -1,1 +1,1460 @@
-__________________________________________________________________________________________[1299, 1302, 'ALF', 'Disease', 'D017114']20196116is E virus (HEV) and non-A non-E-induced ALF, ATT-ALF patients had nearly similar presentations except ******************************[ALF, ATT-ALF]******************************[ATT-ALF]******************************____________________________________________________________[1321, 1323, 'Na', 'Chemical', 'D012964']10706004revealed from the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibit******************************[K(Na, Na+]******************************[K(Na]******************************____________________________________________________________[1335, 1337, 'Na', 'Chemical', 'D012964']10706004the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibition of NO-synt******************************[K(Na, Na+]******************************[Na+]******************************____________________________________________________________[210, 218, 'warfarin', 'Chemical', 'D014859']16858720induced cerebral haemorrhages due to warfarin and warfarin-drug interactions in patients living in the count******************************[warfarin, warfarin-drug]******************************[warfarin-drug]******************************____________________________________________________________[498, 506, 'warfarin', 'Chemical', 'D014859']16858720 retrospectively to evaluate whether warfarin and warfarin-drug interactions could have caused the cerebral ******************************[warfarin, warfarin-drug]******************************[warfarin-drug]******************************____________________________________________________________[26, 36, 'lamivudine', 'Chemical', 'D019259']17854040******************************[lamivudine-resistance, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-resistance]******************************____________________________________________________________[59, 61, 'na', 'Chemical', 'D012964']17854040 associated with lamivudine-resistance in therapy-na  ve hepatitis B virus (HBV) infected patients wit******************************[therapy-na, tyrosine-methionine-aspartate-aspartate]******************************[therapy-na]******************************____________________________________________________________[279, 289, 'lamivudine', 'Chemical', 'D019259']17854040nts. This was an exploratory study to investigate lamivudine-resistant hepatitis B virus (HBV) strains in sele******************************[lamivudine-resistant, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-resistant]******************************____________________________________________________________[344, 354, 'lamivudine', 'Chemical', 'D019259']17854040stant hepatitis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immuno******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[355, 357, 'na', 'Chemical', 'D012964']17854040itis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immunodef******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[479, 489, 'lamivudine', 'Chemical', 'D019259']17854040-infection in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV ******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[490, 492, 'na', 'Chemical', 'D012964']17854040in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV co-******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[702, 707, 'HBsAg', 'Chemical', 'D006514']17854040group was further sub-divided into 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patie******************************[HBsAg-negative, tyrosine-methionine-aspartate-aspartate]******************************[HBsAg-negative]******************************____________________________________________________________[735, 740, 'HBsAg', 'Chemical', 'D006514']17854040o 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patients. HBsAg, anti-HBs, anti-HBc, a******************************[HBsAg-, tyrosine-methionine-aspartate-aspartate]******************************[HBsAg-]******************************____________________________________________________________[1261, 1271, 'lamivudine', 'Chemical', 'D019259']17854040 v2.0 (Roche Diagnostics, Penzberg, Germany). HBV lamivudine-resistant strains were detected in 3 of 15 mono-i******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]******************************[lamivudine-resistant]******************************____________________________________________________________[1472, 1482, 'lamivudine', 'Chemical', 'D019259']17854040owledge, this constitutes the first report of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-in******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]******************************[lamivudine-resistant]******************************____________________________________________________________[1512, 1514, 'na', 'Chemical', 'D012964']17854040rt of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-infected patients. The HBV viral l******************************[tyrosine-methionine-aspartate-aspartate, therapy-na]******************************[therapy-na]******************************____________________________________________________________[1838, 1848, 'lamivudine', 'Chemical', 'D019259']17854040idespread emergence of HBV resistant strains when lamivudine-containing highly active antiretroviral (ARV) tre******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-containing]******************************[lamivudine-containing]******************************____________________________________________________________[485, 496, 'paracetamol', 'Chemical', 'D000082']18004067 alcohol consumption while being treated with 4 g paracetamol/day. A paracetamol serum level obtained in one of******************************[paracetamol/day, paracetamol]******************************[paracetamol/day]******************************____________________________________________________________[105, 108, 'Dex', 'Chemical', 'D003907']17042910nduced hypertension in the rat. 1. Dexamethasone (Dex)-induced hypertension is characterized by endothe******************************[Dexamethasone, (Dex)-induced]******************************[(Dex)-induced]******************************____________________________________________________________[161, 163, 'Na', 'Chemical', 'D012964']7516729g the extracellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and******************************[Na, [Na]o]******************************[[Na]o]******************************____________________________________________________________[171, 173, 'Ca', 'Chemical', 'D002118']7516729acellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and the negat******************************[Ca, [Ca]o]******************************[[Ca]o]******************************____________________________________________________________[484, 486, 'Na', 'Chemical', 'D012964']7516729mM Ca (N). It decreased by 16 +/- 3% by lowering [Na]o to 78 mM (LNa), 23 +/- 2% by lowering simultane******************************[[Na]o, LNa]******************************[[Na]o]******************************____________________________________________________________[954, 962, 'fentanyl', 'Chemical', 'D005283']18544179r to discharge from 20% and 17% with fentanyl and fentanyl-dexamethasone, respectively, to 5% (P = 0.013). A******************************[fentanyl, fentanyl-dexamethasone]******************************[fentanyl-dexamethasone]******************************____________________________________________________________[849, 856, 'cocaine', 'Chemical', 'D003042']1592014 induced by equimolar amounts of cocaine. Whereas cocaine-induced seizures were best characterized as brief******************************[cocaine, cocaine-induced]******************************[cocaine-induced]******************************____________________________________________________________[628, 635, 'CaCl(2)', 'Chemical', 'D002122']20621845ks, animals were euthanized, and CaCl(2)-treated, CaCl(2)-untreated (n=12) and NaCl-treated aortic segments******************************[CaCl(2)-treated, CaCl(2)-untreated]******************************[CaCl(2)-untreated]******************************____________________________________________________________[347, 354, 'choline', 'Chemical', 'D002794']2396046ed for 7-25 months semipurified choline-devoid or choline-supplemented diets, containing or not 0.06% pheno******************************[choline-devoid, choline-supplemented]******************************[choline-supplemented]******************************____________________________________________________________[1086, 1088, 'GM', 'Chemical', 'D005839']12617329mpared to 27% in the cellulose plus GM group) The GM-induced proximal tubular necrosis appeared to be ******************************[GM, GM-induced]******************************[GM-induced]******************************____________________________________________________________[1533, 1535, 'Li', 'Chemical', 'D008094']17042884bo (6.1%), and with QTP + Li/DVP (3.6%) and PBO + Li/DVP (4.9%). Lithium was associated with a signifi******************************[Li/DVP, Lithium]******************************[Li/DVP]******************************____________________________________________________________[448, 452, 'DMSO', 'Chemical', 'D004121']16364460eceived repeatedly vehicles (saline, DMSO, saline+DMSO), scopolamine (2 microg/0.5 microl saline/side; 3******************************[DMSO, saline+DMSO]******************************[saline+DMSO]******************************____________________________________________________________[39, 50, 'bupivacaine', 'Chemical', 'D002045']11524350******************************[bupivacaine-, levobupivacaine-]******************************[bupivacaine-]******************************____________________________________________________________[1195, 1205, 'angioedema', 'Disease', 'D000799']11694026bjects with an history of NSAID-induced urticaria/angioedema or angioedema alone (with or without chronic urti******************************[urticaria/angioedema, angioedema]******************************[urticaria/angioedema]******************************____________________________________________________________[214, 226, 'debrisoquine', 'Chemical', 'D003647']1848636locker metoprolol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, ext******************************[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]******************************[debrisoquine/sparteine]******************************____________________________________________________________[227, 236, 'sparteine', 'Chemical', 'D013034']1848636olol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, extensive (EM******************************[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]******************************[debrisoquine/sparteine]******************************____________________________________________________________[617, 628, 'terbutaline', 'Chemical', 'D013726']1848636ffect studied was the antagonism by metoprolol of terbutaline-induced hypokalemia. By using pharmacokinetic pha******************************[terbutaline-induced, metoprolol/alpha-hydroxymetoprolol]******************************[terbutaline-induced]******************************____________________________________________________________[122, 133, 'cibenzoline', 'Chemical', 'C032151']1700207icular arrhythmias. Antiarrhythmic effects of (+)-cibenzoline and (-)-cibenzoline were examined using two canin******************************[(+)-cibenzoline, (-)-cibenzoline]******************************[(+)-cibenzoline]******************************____________________________________________________________[160, 163, 'dex', 'Chemical', 'D003907']16820346ffects of atorvastatin (atorva) on dexamethasone (dex)-induced hypertension, 60 male Sprague-Dawley rat******************************[dexamethasone, (dex)-induced]******************************[(dex)-induced]******************************____________________________________________________________[1378, 1388, 'metoprolol', 'Chemical', 'D008790']11079278ere found in any parameter between metoprolol and metoprolol-glucagon. CONCLUSION: During dobutamine stress te******************************[metoprolol, metoprolol-glucagon]******************************[metoprolol-glucagon]******************************____________________________________________________________[318, 325, 'seizure', 'Disease', 'D012640']2343592Neither patient had reported previous seizures or seizure-like activity nor was receiving anticonvulsant ag******************************[seizures, seizure-like]******************************[seizure-like]******************************____________________________________________________________[1231, 1235, 'MDMA', 'Chemical', 'D018817']24114426icits than the non-drug controls, the MDMA and EX-MDMA groups recorded greater deficits than all the con******************************[MDMA, EX-MDMA]******************************[EX-MDMA]******************************____________________________________________________________[104, 107, 'Dex', 'Chemical', 'D003907']24587916sone-induced hypertension in rat. Dexamethasone- (Dex-) induced hypertension is associated with enhance******************************[Dexamethasone-, Dex-]******************************[Dex-]******************************____________________________________________________________[524, 535, 'cholesterol', 'Chemical', 'D002784']1615846(HDL) cholesterol greater than 35 mg/dl, or total cholesterol/HDL cholesterol less than 4.5 mg/dl) with diet pl******************************[cholesterol/HDL, cholesterol]******************************[cholesterol/HDL]******************************____________________________________________________________[1364, 1375, 'cholesterol', 'Chemical', 'D002784']1615846ecreased 26% from 176 to 131 mg/dl, and the total cholesterol/HDL cholesterol ratio decreased 24% from 7.1 to 5******************************[cholesterol/HDL, cholesterol]******************************[cholesterol/HDL]******************************____________________________________________________________[1213, 1225, 'cyclosporine', 'Chemical', 'D016572']6310832atients. Pulmonary infections were less common in cyclosporine-treated renal patients than in Aza-treated patien******************************[cyclosporine-and-prednisone-treated, cyclosporine-treated]******************************[cyclosporine-treated]******************************____________________________________________________________[1257, 1260, 'Aza', 'Chemical', 'D001379']6310832on in cyclosporine-treated renal patients than in Aza-treated patients (P less than 0.05). Aza patients******************************[cyclosporine-and-prednisone-treated, Aza-treated]******************************[Aza-treated]******************************____________________________________________________________[544, 549, 'CCK-8', 'Chemical', 'D012844']6316193re of the CCK octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and******************************[CCK-8-SE, CCK-8-NS]******************************[CCK-8-SE]******************************____________________________________________________________[557, 562, 'CCK-8', 'Chemical', 'D012844']6316193 octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and caerulein do******************************[CCK-8-SE, CCK-8-NS]******************************[CCK-8-NS]******************************____________________________________________________________[1202, 1204, 'GM', 'Chemical', 'D005839']8160791or DMTU affected the renal cortical GM content in GM-treated rats. These results suggest that 1) both ******************************[GM, GM-treated]******************************[GM-treated]******************************____________________________________________________________[1050, 1053, 'CO2', 'Chemical', 'D002245']8957205 TRH caused a reduction in the CO2 threshold. The CO2-response curves in the control group were nearly ******************************[CO2, CO2-response]******************************[CO2-response]******************************____________________________________________________________[318, 319, 'K', 'Chemical', 'D011188']9881641 the possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. ******************************[K+, K(ATP]******************************[K+]******************************____________________________________________________________[322, 323, 'K', 'Chemical', 'D011188']9881641 possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The ******************************[K+, K(ATP]******************************[K(ATP]******************************____________________________________________________________[324, 327, 'ATP', 'Chemical', 'D000255']9881641ossibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The resu******************************[ATP, K(ATP]******************************[K(ATP]******************************____________________________________________________________[1000, 1001, 'K', 'Chemical', 'D011188']9881641able to the activation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exi******************************[K+, K(ATP]******************************[K+]******************************____________________________________________________________[1013, 1014, 'K', 'Chemical', 'D011188']9881641ctivation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exist on arteria******************************[K+, K(ATP]******************************[K(ATP]******************************____________________________________________________________[55, 63, 'platinum', 'Chemical', 'D010984']10985896 2 trial of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube ******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[64, 74, 'paclitaxel', 'Chemical', 'D017239']10985896of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube cancers and******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[278, 286, 'platinum', 'Chemical', 'D010984']10985896n (Doxil) to be an active antineoplastic agent in platinum-resistant ovarian cancer, with dose limiting toxi******************************[platinum/paclitaxel-refractory, platinum-resistant, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum-resistant]******************************____________________________________________________________[621, 629, 'platinum', 'Chemical', 'D010984']10985896ctivity in a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERI******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[630, 640, 'paclitaxel', 'Chemical', 'D017239']10985896n a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERIALS: Patien******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[769, 777, 'platinum', 'Chemical', 'D010984']10985896tube cancers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progress******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[778, 788, 'paclitaxel', 'Chemical', 'D017239']10985896ers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progressive disease******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[1895, 1903, 'platinum', 'Chemical', 'D010984']10985896ctivity is observed in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum-]******************************[platinum-]******************************____________________________________________________________[1909, 1919, 'paclitaxel', 'Chemical', 'D017239']10985896erved in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, paclitaxel-refractory]******************************[paclitaxel-refractory]******************************____________________________________________________________[632, 635, 'PAN', 'Chemical', 'D011692']11936424Four groups were used, i) the PAN group (14), ii) PAN/temocapril (13), iii) temocapril (14) and iv) unt******************************[PAN, PAN/temocapril]******************************[PAN/temocapril]******************************____________________________________________________________[1635, 1636, 'N', 'Chemical', 'C012655']15859361ivity reaction to CE was documented among 9 P and N-highly NSAIDs intolerant patients. Thus, we concl******************************[N-highly, NSAIDs]******************************[N-highly]******************************____________________________________________________________[963, 967, 'Pilo', 'Chemical', 'D010862']15987266e regarding GAP43-ir in the IML between Pilo, CHX+Pilo, and control groups. However, the results of the ******************************[Pilo, CHX+Pilo]******************************[CHX+Pilo]******************************____________________________________________________________[677, 685, 'caffeine', 'Chemical', 'D002110']17445520n 2 occasions 7 days apart, 480 mg caffeine and a caffeine-free (placebo) solution were administered in a co******************************[caffeine, caffeine-free]******************************[caffeine-free]******************************____________________________________________________________[669, 673, 'BCNU', 'Chemical', 'D002330']17572393line-control, melatonin-treated, BCNU-exposed and BCNU-exposed plus melatonin. Rats were exposed to BCNU******************************[BCNU-exposed, BCNU-exposed]******************************[BCNU-exposed]******************************____________________________________________________________[610, 613, 'CYP', 'Chemical', 'D003520']18189308r inflammation induced by cyclophosphamide (CYP). CYP-induced cystitis increased (P < or = 0.001) p75(N******************************[CYP, CYP-induced]******************************[CYP-induced]******************************____________________________________________________________[504, 507, 'ADR', 'Chemical', 'D004317']18987260l groups (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) recei******************************[ADR(6, ADR+LOS(6]******************************[ADR(6]******************************____________________________________________________________[512, 515, 'ADR', 'Chemical', 'D004317']18987260 (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR ******************************[ADR(6, ADR+LOS(6, ADR(12]******************************[ADR+LOS(6]******************************____________________________________________________________[527, 530, 'ADR', 'Chemical', 'D004317']18987260) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i******************************[ADR+LOS(6, ADR(12, ADR+LOS(12]******************************[ADR(12]******************************____________________________________________________________[540, 543, 'ADR', 'Chemical', 'D004317']18987260hicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i.v.) twice in******************************[ADR(12, ADR+LOS(12]******************************[ADR+LOS(12]******************************____________________________________________________________[1299, 1302, 'ALF', 'Disease', 'D017114']20196116is E virus (HEV) and non-A non-E-induced ALF, ATT-ALF patients had nearly similar presentations except ******************************[ALF, ATT-ALF]******************************[ATT-ALF]******************************____________________________________________________________[1321, 1323, 'Na', 'Chemical', 'D012964']10706004revealed from the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibit******************************[K(Na, Na+]******************************[K(Na]******************************____________________________________________________________[1335, 1337, 'Na', 'Chemical', 'D012964']10706004the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibition of NO-synt******************************[K(Na, Na+]******************************[Na+]******************************____________________________________________________________[210, 218, 'warfarin', 'Chemical', 'D014859']16858720induced cerebral haemorrhages due to warfarin and warfarin-drug interactions in patients living in the count******************************[warfarin, warfarin-drug]******************************[warfarin-drug]******************************____________________________________________________________[498, 506, 'warfarin', 'Chemical', 'D014859']16858720 retrospectively to evaluate whether warfarin and warfarin-drug interactions could have caused the cerebral ******************************[warfarin, warfarin-drug]******************************[warfarin-drug]******************************____________________________________________________________[26, 36, 'lamivudine', 'Chemical', 'D019259']17854040******************************[lamivudine-resistance, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-resistance]******************************____________________________________________________________[59, 61, 'na', 'Chemical', 'D012964']17854040 associated with lamivudine-resistance in therapy-na  ve hepatitis B virus (HBV) infected patients wit******************************[therapy-na, tyrosine-methionine-aspartate-aspartate]******************************[therapy-na]******************************____________________________________________________________[279, 289, 'lamivudine', 'Chemical', 'D019259']17854040nts. This was an exploratory study to investigate lamivudine-resistant hepatitis B virus (HBV) strains in sele******************************[lamivudine-resistant, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-resistant]******************************____________________________________________________________[344, 354, 'lamivudine', 'Chemical', 'D019259']17854040stant hepatitis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immuno******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[355, 357, 'na', 'Chemical', 'D012964']17854040itis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immunodef******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[479, 489, 'lamivudine', 'Chemical', 'D019259']17854040-infection in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV ******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[490, 492, 'na', 'Chemical', 'D012964']17854040in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV co-******************************[lamivudine-na, tyrosine-methionine-aspartate-aspartate]******************************[lamivudine-na]******************************____________________________________________________________[702, 707, 'HBsAg', 'Chemical', 'D006514']17854040group was further sub-divided into 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patie******************************[HBsAg-negative, tyrosine-methionine-aspartate-aspartate]******************************[HBsAg-negative]******************************____________________________________________________________[735, 740, 'HBsAg', 'Chemical', 'D006514']17854040o 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patients. HBsAg, anti-HBs, anti-HBc, a******************************[HBsAg-, tyrosine-methionine-aspartate-aspartate]******************************[HBsAg-]******************************____________________________________________________________[1261, 1271, 'lamivudine', 'Chemical', 'D019259']17854040 v2.0 (Roche Diagnostics, Penzberg, Germany). HBV lamivudine-resistant strains were detected in 3 of 15 mono-i******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]******************************[lamivudine-resistant]******************************____________________________________________________________[1472, 1482, 'lamivudine', 'Chemical', 'D019259']17854040owledge, this constitutes the first report of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-in******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]******************************[lamivudine-resistant]******************************____________________________________________________________[1512, 1514, 'na', 'Chemical', 'D012964']17854040rt of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-infected patients. The HBV viral l******************************[tyrosine-methionine-aspartate-aspartate, therapy-na]******************************[therapy-na]******************************____________________________________________________________[1838, 1848, 'lamivudine', 'Chemical', 'D019259']17854040idespread emergence of HBV resistant strains when lamivudine-containing highly active antiretroviral (ARV) tre******************************[tyrosine-methionine-aspartate-aspartate, lamivudine-containing]******************************[lamivudine-containing]******************************____________________________________________________________[485, 496, 'paracetamol', 'Chemical', 'D000082']18004067 alcohol consumption while being treated with 4 g paracetamol/day. A paracetamol serum level obtained in one of******************************[paracetamol/day, paracetamol]******************************[paracetamol/day]******************************____________________________________________________________[105, 108, 'Dex', 'Chemical', 'D003907']17042910nduced hypertension in the rat. 1. Dexamethasone (Dex)-induced hypertension is characterized by endothe******************************[Dexamethasone, (Dex)-induced]******************************[(Dex)-induced]******************************____________________________________________________________[161, 163, 'Na', 'Chemical', 'D012964']7516729g the extracellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and******************************[Na, [Na]o]******************************[[Na]o]******************************____________________________________________________________[171, 173, 'Ca', 'Chemical', 'D002118']7516729acellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and the negat******************************[Ca, [Ca]o]******************************[[Ca]o]******************************____________________________________________________________[484, 486, 'Na', 'Chemical', 'D012964']7516729mM Ca (N). It decreased by 16 +/- 3% by lowering [Na]o to 78 mM (LNa), 23 +/- 2% by lowering simultane******************************[[Na]o, LNa]******************************[[Na]o]******************************____________________________________________________________[954, 962, 'fentanyl', 'Chemical', 'D005283']18544179r to discharge from 20% and 17% with fentanyl and fentanyl-dexamethasone, respectively, to 5% (P = 0.013). A******************************[fentanyl, fentanyl-dexamethasone]******************************[fentanyl-dexamethasone]******************************____________________________________________________________[849, 856, 'cocaine', 'Chemical', 'D003042']1592014 induced by equimolar amounts of cocaine. Whereas cocaine-induced seizures were best characterized as brief******************************[cocaine, cocaine-induced]******************************[cocaine-induced]******************************____________________________________________________________[628, 635, 'CaCl(2)', 'Chemical', 'D002122']20621845ks, animals were euthanized, and CaCl(2)-treated, CaCl(2)-untreated (n=12) and NaCl-treated aortic segments******************************[CaCl(2)-treated, CaCl(2)-untreated]******************************[CaCl(2)-untreated]******************************____________________________________________________________[347, 354, 'choline', 'Chemical', 'D002794']2396046ed for 7-25 months semipurified choline-devoid or choline-supplemented diets, containing or not 0.06% pheno******************************[choline-devoid, choline-supplemented]******************************[choline-supplemented]******************************____________________________________________________________[1086, 1088, 'GM', 'Chemical', 'D005839']12617329mpared to 27% in the cellulose plus GM group) The GM-induced proximal tubular necrosis appeared to be ******************************[GM, GM-induced]******************************[GM-induced]******************************____________________________________________________________[1231, 1235, 'MDMA', 'Chemical', 'D018817']24114426icits than the non-drug controls, the MDMA and EX-MDMA groups recorded greater deficits than all the con******************************[MDMA, EX-MDMA]******************************[EX-MDMA]******************************____________________________________________________________[104, 107, 'Dex', 'Chemical', 'D003907']24587916sone-induced hypertension in rat. Dexamethasone- (Dex-) induced hypertension is associated with enhance******************************[Dexamethasone-, Dex-]******************************[Dex-]******************************____________________________________________________________[524, 535, 'cholesterol', 'Chemical', 'D002784']1615846(HDL) cholesterol greater than 35 mg/dl, or total cholesterol/HDL cholesterol less than 4.5 mg/dl) with diet pl******************************[cholesterol/HDL, cholesterol]******************************[cholesterol/HDL]******************************____________________________________________________________[1364, 1375, 'cholesterol', 'Chemical', 'D002784']1615846ecreased 26% from 176 to 131 mg/dl, and the total cholesterol/HDL cholesterol ratio decreased 24% from 7.1 to 5******************************[cholesterol/HDL, cholesterol]******************************[cholesterol/HDL]******************************____________________________________________________________[1213, 1225, 'cyclosporine', 'Chemical', 'D016572']6310832atients. Pulmonary infections were less common in cyclosporine-treated renal patients than in Aza-treated patien******************************[cyclosporine-and-prednisone-treated, cyclosporine-treated]******************************[cyclosporine-treated]******************************____________________________________________________________[1257, 1260, 'Aza', 'Chemical', 'D001379']6310832on in cyclosporine-treated renal patients than in Aza-treated patients (P less than 0.05). Aza patients******************************[cyclosporine-and-prednisone-treated, Aza-treated]******************************[Aza-treated]******************************____________________________________________________________[544, 549, 'CCK-8', 'Chemical', 'D012844']6316193re of the CCK octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and******************************[CCK-8-SE, CCK-8-NS]******************************[CCK-8-SE]******************************____________________________________________________________[557, 562, 'CCK-8', 'Chemical', 'D012844']6316193 octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and caerulein do******************************[CCK-8-SE, CCK-8-NS]******************************[CCK-8-NS]******************************____________________________________________________________[1202, 1204, 'GM', 'Chemical', 'D005839']8160791or DMTU affected the renal cortical GM content in GM-treated rats. These results suggest that 1) both ******************************[GM, GM-treated]******************************[GM-treated]******************************____________________________________________________________[1050, 1053, 'CO2', 'Chemical', 'D002245']8957205 TRH caused a reduction in the CO2 threshold. The CO2-response curves in the control group were nearly ******************************[CO2, CO2-response]******************************[CO2-response]******************************____________________________________________________________[318, 319, 'K', 'Chemical', 'D011188']9881641 the possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. ******************************[K+, K(ATP]******************************[K+]******************************____________________________________________________________[322, 323, 'K', 'Chemical', 'D011188']9881641 possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The ******************************[K+, K(ATP]******************************[K(ATP]******************************____________________________________________________________[324, 327, 'ATP', 'Chemical', 'D000255']9881641ossibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The resu******************************[ATP, K(ATP]******************************[K(ATP]******************************____________________________________________________________[1000, 1001, 'K', 'Chemical', 'D011188']9881641able to the activation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exi******************************[K+, K(ATP]******************************[K+]******************************____________________________________________________________[1013, 1014, 'K', 'Chemical', 'D011188']9881641ctivation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exist on arteria******************************[K+, K(ATP]******************************[K(ATP]******************************____________________________________________________________[55, 63, 'platinum', 'Chemical', 'D010984']10985896 2 trial of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube ******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[64, 74, 'paclitaxel', 'Chemical', 'D017239']10985896of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube cancers and******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[278, 286, 'platinum', 'Chemical', 'D010984']10985896n (Doxil) to be an active antineoplastic agent in platinum-resistant ovarian cancer, with dose limiting toxi******************************[platinum/paclitaxel-refractory, platinum-resistant, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum-resistant]******************************____________________________________________________________[621, 629, 'platinum', 'Chemical', 'D010984']10985896ctivity in a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERI******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[630, 640, 'paclitaxel', 'Chemical', 'D017239']10985896n a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERIALS: Patien******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[769, 777, 'platinum', 'Chemical', 'D010984']10985896tube cancers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progress******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[778, 788, 'paclitaxel', 'Chemical', 'D017239']10985896ers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progressive disease******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]******************************[platinum/paclitaxel-refractory]******************************____________________________________________________________[1895, 1903, 'platinum', 'Chemical', 'D010984']10985896ctivity is observed in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum-]******************************[platinum-]******************************____________________________________________________________[1909, 1919, 'paclitaxel', 'Chemical', 'D017239']10985896erved in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.******************************[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, paclitaxel-refractory]******************************[paclitaxel-refractory]******************************____________________________________________________________[632, 635, 'PAN', 'Chemical', 'D011692']11936424Four groups were used, i) the PAN group (14), ii) PAN/temocapril (13), iii) temocapril (14) and iv) unt******************************[PAN, PAN/temocapril]******************************[PAN/temocapril]******************************____________________________________________________________[1635, 1636, 'N', 'Chemical', 'C012655']15859361ivity reaction to CE was documented among 9 P and N-highly NSAIDs intolerant patients. Thus, we concl******************************[N-highly, NSAIDs]******************************[N-highly]******************************____________________________________________________________[963, 967, 'Pilo', 'Chemical', 'D010862']15987266e regarding GAP43-ir in the IML between Pilo, CHX+Pilo, and control groups. However, the results of the ******************************[Pilo, CHX+Pilo]******************************[CHX+Pilo]******************************____________________________________________________________[677, 685, 'caffeine', 'Chemical', 'D002110']17445520n 2 occasions 7 days apart, 480 mg caffeine and a caffeine-free (placebo) solution were administered in a co******************************[caffeine, caffeine-free]******************************[caffeine-free]******************************____________________________________________________________[669, 673, 'BCNU', 'Chemical', 'D002330']17572393line-control, melatonin-treated, BCNU-exposed and BCNU-exposed plus melatonin. Rats were exposed to BCNU******************************[BCNU-exposed, BCNU-exposed]******************************[BCNU-exposed]******************************____________________________________________________________[610, 613, 'CYP', 'Chemical', 'D003520']18189308r inflammation induced by cyclophosphamide (CYP). CYP-induced cystitis increased (P < or = 0.001) p75(N******************************[CYP, CYP-induced]******************************[CYP-induced]******************************____________________________________________________________[504, 507, 'ADR', 'Chemical', 'D004317']18987260l groups (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) recei******************************[ADR(6, ADR+LOS(6]******************************[ADR(6]******************************____________________________________________________________[512, 515, 'ADR', 'Chemical', 'D004317']18987260 (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR ******************************[ADR(6, ADR+LOS(6, ADR(12]******************************[ADR+LOS(6]******************************____________________________________________________________[527, 530, 'ADR', 'Chemical', 'D004317']18987260) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i******************************[ADR+LOS(6, ADR(12, ADR+LOS(12]******************************[ADR(12]******************************____________________________________________________________[540, 543, 'ADR', 'Chemical', 'D004317']18987260hicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i.v.) twice in******************************[ADR(12, ADR+LOS(12]******************************[ADR+LOS(12]******************************____________________________________________________________[1533, 1535, 'Li', 'Chemical', 'D008094']17042884bo (6.1%), and with QTP + Li/DVP (3.6%) and PBO + Li/DVP (4.9%). Lithium was associated with a signifi******************************[Li/DVP, Lithium]******************************[Li/DVP]******************************____________________________________________________________[448, 452, 'DMSO', 'Chemical', 'D004121']16364460eceived repeatedly vehicles (saline, DMSO, saline+DMSO), scopolamine (2 microg/0.5 microl saline/side; 3******************************[DMSO, saline+DMSO]******************************[saline+DMSO]******************************____________________________________________________________[39, 50, 'bupivacaine', 'Chemical', 'D002045']11524350******************************[bupivacaine-, levobupivacaine-]******************************[bupivacaine-]******************************____________________________________________________________[1195, 1205, 'angioedema', 'Disease', 'D000799']11694026bjects with an history of NSAID-induced urticaria/angioedema or angioedema alone (with or without chronic urti******************************[urticaria/angioedema, angioedema]******************************[urticaria/angioedema]******************************____________________________________________________________[214, 226, 'debrisoquine', 'Chemical', 'D003647']1848636locker metoprolol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, ext******************************[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]******************************[debrisoquine/sparteine]******************************____________________________________________________________[227, 236, 'sparteine', 'Chemical', 'D013034']1848636olol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, extensive (EM******************************[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]******************************[debrisoquine/sparteine]******************************____________________________________________________________[617, 628, 'terbutaline', 'Chemical', 'D013726']1848636ffect studied was the antagonism by metoprolol of terbutaline-induced hypokalemia. By using pharmacokinetic pha******************************[terbutaline-induced, metoprolol/alpha-hydroxymetoprolol]******************************[terbutaline-induced]******************************____________________________________________________________[122, 133, 'cibenzoline', 'Chemical', 'C032151']1700207icular arrhythmias. Antiarrhythmic effects of (+)-cibenzoline and (-)-cibenzoline were examined using two canin******************************[(+)-cibenzoline, (-)-cibenzoline]******************************[(+)-cibenzoline]******************************____________________________________________________________[160, 163, 'dex', 'Chemical', 'D003907']16820346ffects of atorvastatin (atorva) on dexamethasone (dex)-induced hypertension, 60 male Sprague-Dawley rat******************************[dexamethasone, (dex)-induced]******************************[(dex)-induced]******************************____________________________________________________________[1378, 1388, 'metoprolol', 'Chemical', 'D008790']11079278ere found in any parameter between metoprolol and metoprolol-glucagon. CONCLUSION: During dobutamine stress te******************************[metoprolol, metoprolol-glucagon]******************************[metoprolol-glucagon]******************************____________________________________________________________[318, 325, 'seizure', 'Disease', 'D012640']2343592Neither patient had reported previous seizures or seizure-like activity nor was receiving anticonvulsant ag******************************[seizures, seizure-like]******************************[seizure-like]******************************______________________________
+______________________________
+[1299, 1302, 'ALF', 'Disease', 'D017114']
+20196116
+is E virus (HEV) and non-A non-E-induced ALF, ATT-ALF patients had nearly similar presentations except 
+******************************
+[ALF, ATT-ALF]
+******************************
+[ATT-ALF]
+******************************
+______________________________
+______________________________
+[1321, 1323, 'Na', 'Chemical', 'D012964']
+10706004
+revealed from the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibit
+******************************
+[K(Na, Na+]
+******************************
+[K(Na]
+******************************
+______________________________
+______________________________
+[1335, 1337, 'Na', 'Chemical', 'D012964']
+10706004
+the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibition of NO-synt
+******************************
+[K(Na, Na+]
+******************************
+[Na+]
+******************************
+______________________________
+______________________________
+[210, 218, 'warfarin', 'Chemical', 'D014859']
+16858720
+induced cerebral haemorrhages due to warfarin and warfarin-drug interactions in patients living in the count
+******************************
+[warfarin, warfarin-drug]
+******************************
+[warfarin-drug]
+******************************
+______________________________
+______________________________
+[498, 506, 'warfarin', 'Chemical', 'D014859']
+16858720
+ retrospectively to evaluate whether warfarin and warfarin-drug interactions could have caused the cerebral 
+******************************
+[warfarin, warfarin-drug]
+******************************
+[warfarin-drug]
+******************************
+______________________________
+______________________________
+[26, 36, 'lamivudine', 'Chemical', 'D019259']
+17854040
+
+******************************
+[lamivudine-resistance, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-resistance]
+******************************
+______________________________
+______________________________
+[59, 61, 'na', 'Chemical', 'D012964']
+17854040
+ associated with lamivudine-resistance in therapy-na  ve hepatitis B virus (HBV) infected patients wit
+******************************
+[therapy-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[therapy-na]
+******************************
+______________________________
+______________________________
+[279, 289, 'lamivudine', 'Chemical', 'D019259']
+17854040
+nts. This was an exploratory study to investigate lamivudine-resistant hepatitis B virus (HBV) strains in sele
+******************************
+[lamivudine-resistant, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[344, 354, 'lamivudine', 'Chemical', 'D019259']
+17854040
+stant hepatitis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immuno
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[355, 357, 'na', 'Chemical', 'D012964']
+17854040
+itis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immunodef
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[479, 489, 'lamivudine', 'Chemical', 'D019259']
+17854040
+-infection in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV 
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[490, 492, 'na', 'Chemical', 'D012964']
+17854040
+in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV co-
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[702, 707, 'HBsAg', 'Chemical', 'D006514']
+17854040
+group was further sub-divided into 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patie
+******************************
+[HBsAg-negative, tyrosine-methionine-aspartate-aspartate]
+******************************
+[HBsAg-negative]
+******************************
+______________________________
+______________________________
+[735, 740, 'HBsAg', 'Chemical', 'D006514']
+17854040
+o 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patients. HBsAg, anti-HBs, anti-HBc, a
+******************************
+[HBsAg-, tyrosine-methionine-aspartate-aspartate]
+******************************
+[HBsAg-]
+******************************
+______________________________
+______________________________
+[1261, 1271, 'lamivudine', 'Chemical', 'D019259']
+17854040
+ v2.0 (Roche Diagnostics, Penzberg, Germany). HBV lamivudine-resistant strains were detected in 3 of 15 mono-i
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[1472, 1482, 'lamivudine', 'Chemical', 'D019259']
+17854040
+owledge, this constitutes the first report of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-in
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[1512, 1514, 'na', 'Chemical', 'D012964']
+17854040
+rt of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-infected patients. The HBV viral l
+******************************
+[tyrosine-methionine-aspartate-aspartate, therapy-na]
+******************************
+[therapy-na]
+******************************
+______________________________
+______________________________
+[1838, 1848, 'lamivudine', 'Chemical', 'D019259']
+17854040
+idespread emergence of HBV resistant strains when lamivudine-containing highly active antiretroviral (ARV) tre
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-containing]
+******************************
+[lamivudine-containing]
+******************************
+______________________________
+______________________________
+[485, 496, 'paracetamol', 'Chemical', 'D000082']
+18004067
+ alcohol consumption while being treated with 4 g paracetamol/day. A paracetamol serum level obtained in one of
+******************************
+[paracetamol/day, paracetamol]
+******************************
+[paracetamol/day]
+******************************
+______________________________
+______________________________
+[105, 108, 'Dex', 'Chemical', 'D003907']
+17042910
+nduced hypertension in the rat. 1. Dexamethasone (Dex)-induced hypertension is characterized by endothe
+******************************
+[Dexamethasone, (Dex)-induced]
+******************************
+[(Dex)-induced]
+******************************
+______________________________
+______________________________
+[161, 163, 'Na', 'Chemical', 'D012964']
+7516729
+g the extracellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and
+******************************
+[Na, [Na]o]
+******************************
+[[Na]o]
+******************************
+______________________________
+______________________________
+[171, 173, 'Ca', 'Chemical', 'D002118']
+7516729
+acellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and the negat
+******************************
+[Ca, [Ca]o]
+******************************
+[[Ca]o]
+******************************
+______________________________
+______________________________
+[484, 486, 'Na', 'Chemical', 'D012964']
+7516729
+mM Ca (N). It decreased by 16 +/- 3% by lowering [Na]o to 78 mM (LNa), 23 +/- 2% by lowering simultane
+******************************
+[[Na]o, LNa]
+******************************
+[[Na]o]
+******************************
+______________________________
+______________________________
+[954, 962, 'fentanyl', 'Chemical', 'D005283']
+18544179
+r to discharge from 20% and 17% with fentanyl and fentanyl-dexamethasone, respectively, to 5% (P = 0.013). A
+******************************
+[fentanyl, fentanyl-dexamethasone]
+******************************
+[fentanyl-dexamethasone]
+******************************
+______________________________
+______________________________
+[849, 856, 'cocaine', 'Chemical', 'D003042']
+1592014
+ induced by equimolar amounts of cocaine. Whereas cocaine-induced seizures were best characterized as brief
+******************************
+[cocaine, cocaine-induced]
+******************************
+[cocaine-induced]
+******************************
+______________________________
+______________________________
+[628, 635, 'CaCl(2)', 'Chemical', 'D002122']
+20621845
+ks, animals were euthanized, and CaCl(2)-treated, CaCl(2)-untreated (n=12) and NaCl-treated aortic segments
+******************************
+[CaCl(2)-treated, CaCl(2)-untreated]
+******************************
+[CaCl(2)-untreated]
+******************************
+______________________________
+______________________________
+[347, 354, 'choline', 'Chemical', 'D002794']
+2396046
+ed for 7-25 months semipurified choline-devoid or choline-supplemented diets, containing or not 0.06% pheno
+******************************
+[choline-devoid, choline-supplemented]
+******************************
+[choline-supplemented]
+******************************
+______________________________
+______________________________
+[1086, 1088, 'GM', 'Chemical', 'D005839']
+12617329
+mpared to 27% in the cellulose plus GM group) The GM-induced proximal tubular necrosis appeared to be 
+******************************
+[GM, GM-induced]
+******************************
+[GM-induced]
+******************************
+______________________________
+______________________________
+[1533, 1535, 'Li', 'Chemical', 'D008094']
+17042884
+bo (6.1%), and with QTP + Li/DVP (3.6%) and PBO + Li/DVP (4.9%). Lithium was associated with a signifi
+******************************
+[Li/DVP, Lithium]
+******************************
+[Li/DVP]
+******************************
+______________________________
+______________________________
+[448, 452, 'DMSO', 'Chemical', 'D004121']
+16364460
+eceived repeatedly vehicles (saline, DMSO, saline+DMSO), scopolamine (2 microg/0.5 microl saline/side; 3
+******************************
+[DMSO, saline+DMSO]
+******************************
+[saline+DMSO]
+******************************
+______________________________
+______________________________
+[39, 50, 'bupivacaine', 'Chemical', 'D002045']
+11524350
+
+******************************
+[bupivacaine-, levobupivacaine-]
+******************************
+[bupivacaine-]
+******************************
+______________________________
+______________________________
+[1195, 1205, 'angioedema', 'Disease', 'D000799']
+11694026
+bjects with an history of NSAID-induced urticaria/angioedema or angioedema alone (with or without chronic urti
+******************************
+[urticaria/angioedema, angioedema]
+******************************
+[urticaria/angioedema]
+******************************
+______________________________
+______________________________
+[214, 226, 'debrisoquine', 'Chemical', 'D003647']
+1848636
+locker metoprolol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, ext
+******************************
+[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[debrisoquine/sparteine]
+******************************
+______________________________
+______________________________
+[227, 236, 'sparteine', 'Chemical', 'D013034']
+1848636
+olol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, extensive (EM
+******************************
+[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[debrisoquine/sparteine]
+******************************
+______________________________
+______________________________
+[617, 628, 'terbutaline', 'Chemical', 'D013726']
+1848636
+ffect studied was the antagonism by metoprolol of terbutaline-induced hypokalemia. By using pharmacokinetic pha
+******************************
+[terbutaline-induced, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[terbutaline-induced]
+******************************
+______________________________
+______________________________
+[122, 133, 'cibenzoline', 'Chemical', 'C032151']
+1700207
+icular arrhythmias. Antiarrhythmic effects of (+)-cibenzoline and (-)-cibenzoline were examined using two canin
+******************************
+[(+)-cibenzoline, (-)-cibenzoline]
+******************************
+[(+)-cibenzoline]
+******************************
+______________________________
+______________________________
+[160, 163, 'dex', 'Chemical', 'D003907']
+16820346
+ffects of atorvastatin (atorva) on dexamethasone (dex)-induced hypertension, 60 male Sprague-Dawley rat
+******************************
+[dexamethasone, (dex)-induced]
+******************************
+[(dex)-induced]
+******************************
+______________________________
+______________________________
+[1378, 1388, 'metoprolol', 'Chemical', 'D008790']
+11079278
+ere found in any parameter between metoprolol and metoprolol-glucagon. CONCLUSION: During dobutamine stress te
+******************************
+[metoprolol, metoprolol-glucagon]
+******************************
+[metoprolol-glucagon]
+******************************
+______________________________
+______________________________
+[318, 325, 'seizure', 'Disease', 'D012640']
+2343592
+Neither patient had reported previous seizures or seizure-like activity nor was receiving anticonvulsant ag
+******************************
+[seizures, seizure-like]
+******************************
+[seizure-like]
+******************************
+______________________________
+______________________________
+[1231, 1235, 'MDMA', 'Chemical', 'D018817']
+24114426
+icits than the non-drug controls, the MDMA and EX-MDMA groups recorded greater deficits than all the con
+******************************
+[MDMA, EX-MDMA]
+******************************
+[EX-MDMA]
+******************************
+______________________________
+______________________________
+[104, 107, 'Dex', 'Chemical', 'D003907']
+24587916
+sone-induced hypertension in rat. Dexamethasone- (Dex-) induced hypertension is associated with enhance
+******************************
+[Dexamethasone-, Dex-]
+******************************
+[Dex-]
+******************************
+______________________________
+______________________________
+[524, 535, 'cholesterol', 'Chemical', 'D002784']
+1615846
+(HDL) cholesterol greater than 35 mg/dl, or total cholesterol/HDL cholesterol less than 4.5 mg/dl) with diet pl
+******************************
+[cholesterol/HDL, cholesterol]
+******************************
+[cholesterol/HDL]
+******************************
+______________________________
+______________________________
+[1364, 1375, 'cholesterol', 'Chemical', 'D002784']
+1615846
+ecreased 26% from 176 to 131 mg/dl, and the total cholesterol/HDL cholesterol ratio decreased 24% from 7.1 to 5
+******************************
+[cholesterol/HDL, cholesterol]
+******************************
+[cholesterol/HDL]
+******************************
+______________________________
+______________________________
+[1213, 1225, 'cyclosporine', 'Chemical', 'D016572']
+6310832
+atients. Pulmonary infections were less common in cyclosporine-treated renal patients than in Aza-treated patien
+******************************
+[cyclosporine-and-prednisone-treated, cyclosporine-treated]
+******************************
+[cyclosporine-treated]
+******************************
+______________________________
+______________________________
+[1257, 1260, 'Aza', 'Chemical', 'D001379']
+6310832
+on in cyclosporine-treated renal patients than in Aza-treated patients (P less than 0.05). Aza patients
+******************************
+[cyclosporine-and-prednisone-treated, Aza-treated]
+******************************
+[Aza-treated]
+******************************
+______________________________
+______________________________
+[544, 549, 'CCK-8', 'Chemical', 'D012844']
+6316193
+re of the CCK octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and
+******************************
+[CCK-8-SE, CCK-8-NS]
+******************************
+[CCK-8-SE]
+******************************
+______________________________
+______________________________
+[557, 562, 'CCK-8', 'Chemical', 'D012844']
+6316193
+ octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and caerulein do
+******************************
+[CCK-8-SE, CCK-8-NS]
+******************************
+[CCK-8-NS]
+******************************
+______________________________
+______________________________
+[1202, 1204, 'GM', 'Chemical', 'D005839']
+8160791
+or DMTU affected the renal cortical GM content in GM-treated rats. These results suggest that 1) both 
+******************************
+[GM, GM-treated]
+******************************
+[GM-treated]
+******************************
+______________________________
+______________________________
+[1050, 1053, 'CO2', 'Chemical', 'D002245']
+8957205
+ TRH caused a reduction in the CO2 threshold. The CO2-response curves in the control group were nearly 
+******************************
+[CO2, CO2-response]
+******************************
+[CO2-response]
+******************************
+______________________________
+______________________________
+[318, 319, 'K', 'Chemical', 'D011188']
+9881641
+ the possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. 
+******************************
+[K+, K(ATP]
+******************************
+[K+]
+******************************
+______________________________
+______________________________
+[322, 323, 'K', 'Chemical', 'D011188']
+9881641
+ possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The 
+******************************
+[K+, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[324, 327, 'ATP', 'Chemical', 'D000255']
+9881641
+ossibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The resu
+******************************
+[ATP, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[1000, 1001, 'K', 'Chemical', 'D011188']
+9881641
+able to the activation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exi
+******************************
+[K+, K(ATP]
+******************************
+[K+]
+******************************
+______________________________
+______________________________
+[1013, 1014, 'K', 'Chemical', 'D011188']
+9881641
+ctivation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exist on arteria
+******************************
+[K+, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[55, 63, 'platinum', 'Chemical', 'D010984']
+10985896
+ 2 trial of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube 
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[64, 74, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube cancers and
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[278, 286, 'platinum', 'Chemical', 'D010984']
+10985896
+n (Doxil) to be an active antineoplastic agent in platinum-resistant ovarian cancer, with dose limiting toxi
+******************************
+[platinum/paclitaxel-refractory, platinum-resistant, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum-resistant]
+******************************
+______________________________
+______________________________
+[621, 629, 'platinum', 'Chemical', 'D010984']
+10985896
+ctivity in a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERI
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[630, 640, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+n a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERIALS: Patien
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[769, 777, 'platinum', 'Chemical', 'D010984']
+10985896
+tube cancers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progress
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[778, 788, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+ers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progressive disease
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[1895, 1903, 'platinum', 'Chemical', 'D010984']
+10985896
+ctivity is observed in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum-]
+******************************
+[platinum-]
+******************************
+______________________________
+______________________________
+[1909, 1919, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+erved in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, paclitaxel-refractory]
+******************************
+[paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[632, 635, 'PAN', 'Chemical', 'D011692']
+11936424
+Four groups were used, i) the PAN group (14), ii) PAN/temocapril (13), iii) temocapril (14) and iv) unt
+******************************
+[PAN, PAN/temocapril]
+******************************
+[PAN/temocapril]
+******************************
+______________________________
+______________________________
+[1635, 1636, 'N', 'Chemical', 'C012655']
+15859361
+ivity reaction to CE was documented among 9 P and N-highly NSAIDs intolerant patients. Thus, we concl
+******************************
+[N-highly, NSAIDs]
+******************************
+[N-highly]
+******************************
+______________________________
+______________________________
+[963, 967, 'Pilo', 'Chemical', 'D010862']
+15987266
+e regarding GAP43-ir in the IML between Pilo, CHX+Pilo, and control groups. However, the results of the 
+******************************
+[Pilo, CHX+Pilo]
+******************************
+[CHX+Pilo]
+******************************
+______________________________
+______________________________
+[677, 685, 'caffeine', 'Chemical', 'D002110']
+17445520
+n 2 occasions 7 days apart, 480 mg caffeine and a caffeine-free (placebo) solution were administered in a co
+******************************
+[caffeine, caffeine-free]
+******************************
+[caffeine-free]
+******************************
+______________________________
+______________________________
+[669, 673, 'BCNU', 'Chemical', 'D002330']
+17572393
+line-control, melatonin-treated, BCNU-exposed and BCNU-exposed plus melatonin. Rats were exposed to BCNU
+******************************
+[BCNU-exposed, BCNU-exposed]
+******************************
+[BCNU-exposed]
+******************************
+______________________________
+______________________________
+[610, 613, 'CYP', 'Chemical', 'D003520']
+18189308
+r inflammation induced by cyclophosphamide (CYP). CYP-induced cystitis increased (P < or = 0.001) p75(N
+******************************
+[CYP, CYP-induced]
+******************************
+[CYP-induced]
+******************************
+______________________________
+______________________________
+[504, 507, 'ADR', 'Chemical', 'D004317']
+18987260
+l groups (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) recei
+******************************
+[ADR(6, ADR+LOS(6]
+******************************
+[ADR(6]
+******************************
+______________________________
+______________________________
+[512, 515, 'ADR', 'Chemical', 'D004317']
+18987260
+ (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR 
+******************************
+[ADR(6, ADR+LOS(6, ADR(12]
+******************************
+[ADR+LOS(6]
+******************************
+______________________________
+______________________________
+[527, 530, 'ADR', 'Chemical', 'D004317']
+18987260
+) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i
+******************************
+[ADR+LOS(6, ADR(12, ADR+LOS(12]
+******************************
+[ADR(12]
+******************************
+______________________________
+______________________________
+[540, 543, 'ADR', 'Chemical', 'D004317']
+18987260
+hicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i.v.) twice in
+******************************
+[ADR(12, ADR+LOS(12]
+******************************
+[ADR+LOS(12]
+******************************
+______________________________
+______________________________
+[1299, 1302, 'ALF', 'Disease', 'D017114']
+20196116
+is E virus (HEV) and non-A non-E-induced ALF, ATT-ALF patients had nearly similar presentations except 
+******************************
+[ALF, ATT-ALF]
+******************************
+[ATT-ALF]
+******************************
+______________________________
+______________________________
+[1321, 1323, 'Na', 'Chemical', 'D012964']
+10706004
+revealed from the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibit
+******************************
+[K(Na, Na+]
+******************************
+[K(Na]
+******************************
+______________________________
+______________________________
+[1335, 1337, 'Na', 'Chemical', 'D012964']
+10706004
+the lowered Km value for ATP. The K(Na) value for Na+ returned to control value. Inhibition of NO-synt
+******************************
+[K(Na, Na+]
+******************************
+[Na+]
+******************************
+______________________________
+______________________________
+[210, 218, 'warfarin', 'Chemical', 'D014859']
+16858720
+induced cerebral haemorrhages due to warfarin and warfarin-drug interactions in patients living in the count
+******************************
+[warfarin, warfarin-drug]
+******************************
+[warfarin-drug]
+******************************
+______________________________
+______________________________
+[498, 506, 'warfarin', 'Chemical', 'D014859']
+16858720
+ retrospectively to evaluate whether warfarin and warfarin-drug interactions could have caused the cerebral 
+******************************
+[warfarin, warfarin-drug]
+******************************
+[warfarin-drug]
+******************************
+______________________________
+______________________________
+[26, 36, 'lamivudine', 'Chemical', 'D019259']
+17854040
+
+******************************
+[lamivudine-resistance, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-resistance]
+******************************
+______________________________
+______________________________
+[59, 61, 'na', 'Chemical', 'D012964']
+17854040
+ associated with lamivudine-resistance in therapy-na  ve hepatitis B virus (HBV) infected patients wit
+******************************
+[therapy-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[therapy-na]
+******************************
+______________________________
+______________________________
+[279, 289, 'lamivudine', 'Chemical', 'D019259']
+17854040
+nts. This was an exploratory study to investigate lamivudine-resistant hepatitis B virus (HBV) strains in sele
+******************************
+[lamivudine-resistant, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[344, 354, 'lamivudine', 'Chemical', 'D019259']
+17854040
+stant hepatitis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immuno
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[355, 357, 'na', 'Chemical', 'D012964']
+17854040
+itis B virus (HBV) strains in selected lamivudine-na  ve HBV carriers with and without human immunodef
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[479, 489, 'lamivudine', 'Chemical', 'D019259']
+17854040
+-infection in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV 
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[490, 492, 'na', 'Chemical', 'D012964']
+17854040
+in South African patients. Thirty-five lamivudine-na  ve HBV infected patients with or without HIV co-
+******************************
+[lamivudine-na, tyrosine-methionine-aspartate-aspartate]
+******************************
+[lamivudine-na]
+******************************
+______________________________
+______________________________
+[702, 707, 'HBsAg', 'Chemical', 'D006514']
+17854040
+group was further sub-divided into 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patie
+******************************
+[HBsAg-negative, tyrosine-methionine-aspartate-aspartate]
+******************************
+[HBsAg-negative]
+******************************
+______________________________
+______________________________
+[735, 740, 'HBsAg', 'Chemical', 'D006514']
+17854040
+o 13 occult HBV (HBsAg-negative) and 7 overt HBV (HBsAg- positive) patients. HBsAg, anti-HBs, anti-HBc, a
+******************************
+[HBsAg-, tyrosine-methionine-aspartate-aspartate]
+******************************
+[HBsAg-]
+******************************
+______________________________
+______________________________
+[1261, 1271, 'lamivudine', 'Chemical', 'D019259']
+17854040
+ v2.0 (Roche Diagnostics, Penzberg, Germany). HBV lamivudine-resistant strains were detected in 3 of 15 mono-i
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[1472, 1482, 'lamivudine', 'Chemical', 'D019259']
+17854040
+owledge, this constitutes the first report of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-in
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-resistant]
+******************************
+[lamivudine-resistant]
+******************************
+______________________________
+______________________________
+[1512, 1514, 'na', 'Chemical', 'D012964']
+17854040
+rt of HBV lamivudine-resistant strains in therapy-na  ve HBV-HIV co-infected patients. The HBV viral l
+******************************
+[tyrosine-methionine-aspartate-aspartate, therapy-na]
+******************************
+[therapy-na]
+******************************
+______________________________
+______________________________
+[1838, 1848, 'lamivudine', 'Chemical', 'D019259']
+17854040
+idespread emergence of HBV resistant strains when lamivudine-containing highly active antiretroviral (ARV) tre
+******************************
+[tyrosine-methionine-aspartate-aspartate, lamivudine-containing]
+******************************
+[lamivudine-containing]
+******************************
+______________________________
+______________________________
+[485, 496, 'paracetamol', 'Chemical', 'D000082']
+18004067
+ alcohol consumption while being treated with 4 g paracetamol/day. A paracetamol serum level obtained in one of
+******************************
+[paracetamol/day, paracetamol]
+******************************
+[paracetamol/day]
+******************************
+______________________________
+______________________________
+[105, 108, 'Dex', 'Chemical', 'D003907']
+17042910
+nduced hypertension in the rat. 1. Dexamethasone (Dex)-induced hypertension is characterized by endothe
+******************************
+[Dexamethasone, (Dex)-induced]
+******************************
+[(Dex)-induced]
+******************************
+______________________________
+______________________________
+[161, 163, 'Na', 'Chemical', 'D012964']
+7516729
+g the extracellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and
+******************************
+[Na, [Na]o]
+******************************
+[[Na]o]
+******************************
+______________________________
+______________________________
+[171, 173, 'Ca', 'Chemical', 'D002118']
+7516729
+acellular concentrations of Na and Ca ([Na]o and [Ca]o) on both, the spontaneous beating and the negat
+******************************
+[Ca, [Ca]o]
+******************************
+[[Ca]o]
+******************************
+______________________________
+______________________________
+[484, 486, 'Na', 'Chemical', 'D012964']
+7516729
+mM Ca (N). It decreased by 16 +/- 3% by lowering [Na]o to 78 mM (LNa), 23 +/- 2% by lowering simultane
+******************************
+[[Na]o, LNa]
+******************************
+[[Na]o]
+******************************
+______________________________
+______________________________
+[954, 962, 'fentanyl', 'Chemical', 'D005283']
+18544179
+r to discharge from 20% and 17% with fentanyl and fentanyl-dexamethasone, respectively, to 5% (P = 0.013). A
+******************************
+[fentanyl, fentanyl-dexamethasone]
+******************************
+[fentanyl-dexamethasone]
+******************************
+______________________________
+______________________________
+[849, 856, 'cocaine', 'Chemical', 'D003042']
+1592014
+ induced by equimolar amounts of cocaine. Whereas cocaine-induced seizures were best characterized as brief
+******************************
+[cocaine, cocaine-induced]
+******************************
+[cocaine-induced]
+******************************
+______________________________
+______________________________
+[628, 635, 'CaCl(2)', 'Chemical', 'D002122']
+20621845
+ks, animals were euthanized, and CaCl(2)-treated, CaCl(2)-untreated (n=12) and NaCl-treated aortic segments
+******************************
+[CaCl(2)-treated, CaCl(2)-untreated]
+******************************
+[CaCl(2)-untreated]
+******************************
+______________________________
+______________________________
+[347, 354, 'choline', 'Chemical', 'D002794']
+2396046
+ed for 7-25 months semipurified choline-devoid or choline-supplemented diets, containing or not 0.06% pheno
+******************************
+[choline-devoid, choline-supplemented]
+******************************
+[choline-supplemented]
+******************************
+______________________________
+______________________________
+[1086, 1088, 'GM', 'Chemical', 'D005839']
+12617329
+mpared to 27% in the cellulose plus GM group) The GM-induced proximal tubular necrosis appeared to be 
+******************************
+[GM, GM-induced]
+******************************
+[GM-induced]
+******************************
+______________________________
+______________________________
+[1231, 1235, 'MDMA', 'Chemical', 'D018817']
+24114426
+icits than the non-drug controls, the MDMA and EX-MDMA groups recorded greater deficits than all the con
+******************************
+[MDMA, EX-MDMA]
+******************************
+[EX-MDMA]
+******************************
+______________________________
+______________________________
+[104, 107, 'Dex', 'Chemical', 'D003907']
+24587916
+sone-induced hypertension in rat. Dexamethasone- (Dex-) induced hypertension is associated with enhance
+******************************
+[Dexamethasone-, Dex-]
+******************************
+[Dex-]
+******************************
+______________________________
+______________________________
+[524, 535, 'cholesterol', 'Chemical', 'D002784']
+1615846
+(HDL) cholesterol greater than 35 mg/dl, or total cholesterol/HDL cholesterol less than 4.5 mg/dl) with diet pl
+******************************
+[cholesterol/HDL, cholesterol]
+******************************
+[cholesterol/HDL]
+******************************
+______________________________
+______________________________
+[1364, 1375, 'cholesterol', 'Chemical', 'D002784']
+1615846
+ecreased 26% from 176 to 131 mg/dl, and the total cholesterol/HDL cholesterol ratio decreased 24% from 7.1 to 5
+******************************
+[cholesterol/HDL, cholesterol]
+******************************
+[cholesterol/HDL]
+******************************
+______________________________
+______________________________
+[1213, 1225, 'cyclosporine', 'Chemical', 'D016572']
+6310832
+atients. Pulmonary infections were less common in cyclosporine-treated renal patients than in Aza-treated patien
+******************************
+[cyclosporine-and-prednisone-treated, cyclosporine-treated]
+******************************
+[cyclosporine-treated]
+******************************
+______________________________
+______________________________
+[1257, 1260, 'Aza', 'Chemical', 'D001379']
+6310832
+on in cyclosporine-treated renal patients than in Aza-treated patients (P less than 0.05). Aza patients
+******************************
+[cyclosporine-and-prednisone-treated, Aza-treated]
+******************************
+[Aza-treated]
+******************************
+______________________________
+______________________________
+[544, 549, 'CCK-8', 'Chemical', 'D012844']
+6316193
+re of the CCK octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and
+******************************
+[CCK-8-SE, CCK-8-NS]
+******************************
+[CCK-8-SE]
+******************************
+______________________________
+______________________________
+[557, 562, 'CCK-8', 'Chemical', 'D012844']
+6316193
+ octapeptide molecule. The analogues CCK-8-SE and CCK-8-NS (dose range 0.2-6.4 mumol/kg) and caerulein do
+******************************
+[CCK-8-SE, CCK-8-NS]
+******************************
+[CCK-8-NS]
+******************************
+______________________________
+______________________________
+[1202, 1204, 'GM', 'Chemical', 'D005839']
+8160791
+or DMTU affected the renal cortical GM content in GM-treated rats. These results suggest that 1) both 
+******************************
+[GM, GM-treated]
+******************************
+[GM-treated]
+******************************
+______________________________
+______________________________
+[1050, 1053, 'CO2', 'Chemical', 'D002245']
+8957205
+ TRH caused a reduction in the CO2 threshold. The CO2-response curves in the control group were nearly 
+******************************
+[CO2, CO2-response]
+******************************
+[CO2-response]
+******************************
+______________________________
+______________________________
+[318, 319, 'K', 'Chemical', 'D011188']
+9881641
+ the possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. 
+******************************
+[K+, K(ATP]
+******************************
+[K+]
+******************************
+______________________________
+______________________________
+[322, 323, 'K', 'Chemical', 'D011188']
+9881641
+ possibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The 
+******************************
+[K+, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[324, 327, 'ATP', 'Chemical', 'D000255']
+9881641
+ossibility that activation of ATP sensitive K+ (K(ATP)) channels is involved in the responses. The resu
+******************************
+[ATP, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[1000, 1001, 'K', 'Chemical', 'D011188']
+9881641
+able to the activation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exi
+******************************
+[K+, K(ATP]
+******************************
+[K+]
+******************************
+______________________________
+______________________________
+[1013, 1014, 'K', 'Chemical', 'D011188']
+9881641
+ctivation of glibenclamide-sensitive K+ channels (K(ATP) channels), which presumably exist on arteria
+******************************
+[K+, K(ATP]
+******************************
+[K(ATP]
+******************************
+______________________________
+______________________________
+[55, 63, 'platinum', 'Chemical', 'D010984']
+10985896
+ 2 trial of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube 
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[64, 74, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+of liposomal doxorubicin (40 mg/m(2)) in platinum/paclitaxel-refractory ovarian and fallopian tube cancers and
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[278, 286, 'platinum', 'Chemical', 'D010984']
+10985896
+n (Doxil) to be an active antineoplastic agent in platinum-resistant ovarian cancer, with dose limiting toxi
+******************************
+[platinum/paclitaxel-refractory, platinum-resistant, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum-resistant]
+******************************
+______________________________
+______________________________
+[621, 629, 'platinum', 'Chemical', 'D010984']
+10985896
+ctivity in a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERI
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[630, 640, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+n a well-defined patient population with platinum/paclitaxel-refractory disease. METHODS AND MATERIALS: Patien
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[769, 777, 'platinum', 'Chemical', 'D010984']
+10985896
+tube cancers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progress
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[778, 788, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+ers or primary peritoneal carcinoma with platinum/paclitaxel-refractory disease (stable or progressive disease
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory]
+******************************
+[platinum/paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[1895, 1903, 'platinum', 'Chemical', 'D010984']
+10985896
+ctivity is observed in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum-]
+******************************
+[platinum-]
+******************************
+______________________________
+______________________________
+[1909, 1919, 'paclitaxel', 'Chemical', 'D017239']
+10985896
+erved in patients with well-defined platinum- and paclitaxel-refractory ovarian cancer.
+******************************
+[platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, platinum/paclitaxel-refractory, paclitaxel-refractory]
+******************************
+[paclitaxel-refractory]
+******************************
+______________________________
+______________________________
+[632, 635, 'PAN', 'Chemical', 'D011692']
+11936424
+Four groups were used, i) the PAN group (14), ii) PAN/temocapril (13), iii) temocapril (14) and iv) unt
+******************************
+[PAN, PAN/temocapril]
+******************************
+[PAN/temocapril]
+******************************
+______________________________
+______________________________
+[1635, 1636, 'N', 'Chemical', 'C012655']
+15859361
+ivity reaction to CE was documented among 9 P and N-highly NSAIDs intolerant patients. Thus, we concl
+******************************
+[N-highly, NSAIDs]
+******************************
+[N-highly]
+******************************
+______________________________
+______________________________
+[963, 967, 'Pilo', 'Chemical', 'D010862']
+15987266
+e regarding GAP43-ir in the IML between Pilo, CHX+Pilo, and control groups. However, the results of the 
+******************************
+[Pilo, CHX+Pilo]
+******************************
+[CHX+Pilo]
+******************************
+______________________________
+______________________________
+[677, 685, 'caffeine', 'Chemical', 'D002110']
+17445520
+n 2 occasions 7 days apart, 480 mg caffeine and a caffeine-free (placebo) solution were administered in a co
+******************************
+[caffeine, caffeine-free]
+******************************
+[caffeine-free]
+******************************
+______________________________
+______________________________
+[669, 673, 'BCNU', 'Chemical', 'D002330']
+17572393
+line-control, melatonin-treated, BCNU-exposed and BCNU-exposed plus melatonin. Rats were exposed to BCNU
+******************************
+[BCNU-exposed, BCNU-exposed]
+******************************
+[BCNU-exposed]
+******************************
+______________________________
+______________________________
+[610, 613, 'CYP', 'Chemical', 'D003520']
+18189308
+r inflammation induced by cyclophosphamide (CYP). CYP-induced cystitis increased (P < or = 0.001) p75(N
+******************************
+[CYP, CYP-induced]
+******************************
+[CYP-induced]
+******************************
+______________________________
+______________________________
+[504, 507, 'ADR', 'Chemical', 'D004317']
+18987260
+l groups (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) recei
+******************************
+[ADR(6, ADR+LOS(6]
+******************************
+[ADR(6]
+******************************
+______________________________
+______________________________
+[512, 515, 'ADR', 'Chemical', 'D004317']
+18987260
+ (SH(6), SH(12)) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR 
+******************************
+[ADR(6, ADR+LOS(6, ADR(12]
+******************************
+[ADR+LOS(6]
+******************************
+______________________________
+______________________________
+[527, 530, 'ADR', 'Chemical', 'D004317']
+18987260
+) received vehicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i
+******************************
+[ADR+LOS(6, ADR(12, ADR+LOS(12]
+******************************
+[ADR(12]
+******************************
+______________________________
+______________________________
+[540, 543, 'ADR', 'Chemical', 'D004317']
+18987260
+hicle. Groups ADR(6), ADR+LOS(6) and ADR(12), and ADR+LOS(12) received ADR (2 mg/kg/b.w. i.v.) twice in
+******************************
+[ADR(12, ADR+LOS(12]
+******************************
+[ADR+LOS(12]
+******************************
+______________________________
+______________________________
+[1533, 1535, 'Li', 'Chemical', 'D008094']
+17042884
+bo (6.1%), and with QTP + Li/DVP (3.6%) and PBO + Li/DVP (4.9%). Lithium was associated with a signifi
+******************************
+[Li/DVP, Lithium]
+******************************
+[Li/DVP]
+******************************
+______________________________
+______________________________
+[448, 452, 'DMSO', 'Chemical', 'D004121']
+16364460
+eceived repeatedly vehicles (saline, DMSO, saline+DMSO), scopolamine (2 microg/0.5 microl saline/side; 3
+******************************
+[DMSO, saline+DMSO]
+******************************
+[saline+DMSO]
+******************************
+______________________________
+______________________________
+[39, 50, 'bupivacaine', 'Chemical', 'D002045']
+11524350
+
+******************************
+[bupivacaine-, levobupivacaine-]
+******************************
+[bupivacaine-]
+******************************
+______________________________
+______________________________
+[1195, 1205, 'angioedema', 'Disease', 'D000799']
+11694026
+bjects with an history of NSAID-induced urticaria/angioedema or angioedema alone (with or without chronic urti
+******************************
+[urticaria/angioedema, angioedema]
+******************************
+[urticaria/angioedema]
+******************************
+______________________________
+______________________________
+[214, 226, 'debrisoquine', 'Chemical', 'D003647']
+1848636
+locker metoprolol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, ext
+******************************
+[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[debrisoquine/sparteine]
+******************************
+______________________________
+______________________________
+[227, 236, 'sparteine', 'Chemical', 'D013034']
+1848636
+olol is under genetic control of the debrisoquine/sparteine type. The two metabolic phenotypes, extensive (EM
+******************************
+[debrisoquine/sparteine, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[debrisoquine/sparteine]
+******************************
+______________________________
+______________________________
+[617, 628, 'terbutaline', 'Chemical', 'D013726']
+1848636
+ffect studied was the antagonism by metoprolol of terbutaline-induced hypokalemia. By using pharmacokinetic pha
+******************************
+[terbutaline-induced, metoprolol/alpha-hydroxymetoprolol]
+******************************
+[terbutaline-induced]
+******************************
+______________________________
+______________________________
+[122, 133, 'cibenzoline', 'Chemical', 'C032151']
+1700207
+icular arrhythmias. Antiarrhythmic effects of (+)-cibenzoline and (-)-cibenzoline were examined using two canin
+******************************
+[(+)-cibenzoline, (-)-cibenzoline]
+******************************
+[(+)-cibenzoline]
+******************************
+______________________________
+______________________________
+[160, 163, 'dex', 'Chemical', 'D003907']
+16820346
+ffects of atorvastatin (atorva) on dexamethasone (dex)-induced hypertension, 60 male Sprague-Dawley rat
+******************************
+[dexamethasone, (dex)-induced]
+******************************
+[(dex)-induced]
+******************************
+______________________________
+______________________________
+[1378, 1388, 'metoprolol', 'Chemical', 'D008790']
+11079278
+ere found in any parameter between metoprolol and metoprolol-glucagon. CONCLUSION: During dobutamine stress te
+******************************
+[metoprolol, metoprolol-glucagon]
+******************************
+[metoprolol-glucagon]
+******************************
+______________________________
+______________________________
+[318, 325, 'seizure', 'Disease', 'D012640']
+2343592
+Neither patient had reported previous seizures or seizure-like activity nor was receiving anticonvulsant ag
+******************************
+[seizures, seizure-like]
+******************************
+[seizure-like]
+******************************
+______________________________
