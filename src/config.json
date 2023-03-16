@@ -20,7 +20,7 @@
             "name": "cosine_with_warmup"
         },
         "gradient_clipping": 5,
-        "batch_size": 2,
+        "batch_size": 8,
         "batch_max_tokens": null,
         "eval_interval": 10000,
         "log_interval": 50,
