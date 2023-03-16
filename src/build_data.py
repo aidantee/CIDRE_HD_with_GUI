@@ -10,21 +10,25 @@ import os
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="data/config.json", help="path to the config.json file", type=str)
+    # parser.add_argument("--config", default=str, help="path to the config.json file", type=str)
+    parser.add_argument("--type", default=str, help="type of dataset", type=str)
+
     args = parser.parse_args()
-    config = CDRConfig.from_json_file(args.config)
+    config_file_path = "config.json"
+    config = CDRConfig.from_json(config_file_path)
     corpus = CDRCorpus(config)
 
     # if you still dont have the vocabs for the dataset. You need to call this method firstly.
     print("Preparing all vocabs .....")
-    corpus.prepare_all_vocabs(config.saved_folder_path)
+    corpus.prepare_all_vocabs(config.data.saved_data_path)
+
     print("Preparing all data ....")
     corpus.prepare_features_for_one_dataset(
-        config.train_file_path, config.saved_folder_path, "train"
+        config.data.train_file_path, config.data.saved_data_path, "train"
     )
     corpus.prepare_features_for_one_dataset(
-        config.test_file_path, config.saved_folder_path, "test"
+        config.data.test_file_path, config.data.saved_data_path, "test"
     )
     corpus.prepare_features_for_one_dataset(
-        config.dev_file_path, config.saved_folder_path, "dev"
+        config.data.dev_file_path, config.data.saved_data_path, "dev"
     )

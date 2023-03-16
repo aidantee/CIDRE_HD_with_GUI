@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 from allennlp.modules.elmo import Elmo
 
+from config.model_config import GraphEncoderConfig, GraphLSTMConfig
+
 elmo_options_file = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/contributed/pubmed/elmo_2x4096_512_2048cnn_2xhighway_options.json"
 elmo_weight_file = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/contributed/pubmed/elmo_2x4096_512_2048cnn_2xhighway_weights_PubMed_only.hdf5"
 
@@ -57,74 +59,63 @@ class GraphAttnModule(nn.Module):
 class GraphEncoder(nn.Module):
     def __init__(
             self,
-            time_step,
+            config: GraphEncoderConfig,
             edge_vocab_size,
             pos_vocab_size,
             char_vocab_size,
             word_vocab_size,
-            contextual_word_embedding_dim,
-            edge_embedding_dim,
-            pos_embedding_dim,
-            combined_embedding_dim,
-            lstm_hidden_size,
-            hidden_size,
-            in_attn_heads,
-            out_attn_heads,
-            use_char,
-            use_pos,
-            use_word,
-            use_state,
-            kernel_size=5,
-            word_embedding_dim=200,
-            n_filters=30,
-            char_embedding_dim=30,
-            use_attn=True,
             device: str = "cpu",
-            drop_out=0.2,
     ):
 
         super(GraphEncoder, self).__init__()
+        self.config = config
+        self.edge_embedding = nn.Embedding(edge_vocab_size, config.edge_embedding_dim)
+        self.pos_embedding = nn.Embedding(pos_vocab_size, config.pos_embedding_dim)
+        self.char_embedding = nn.Embedding(char_vocab_size, config.char_embedding_dim)
+        self.word_embedding = nn.Embedding(word_vocab_size, config.word_embedding_dim)
+        self.distance_embedding = nn.Embedding(config.max_distance_mention_token, config.distance_embedding_dim)
 
-        self.edge_embedding = nn.Embedding(edge_vocab_size, edge_embedding_dim)
-        self.pos_embedding = nn.Embedding(pos_vocab_size, pos_embedding_dim)
-        self.char_embedding = nn.Embedding(char_vocab_size, char_embedding_dim)
-        self.word_embedding = nn.Embedding(word_vocab_size, word_embedding_dim)
-
-        self.n_filters = n_filters
+        self.n_filters = config.n_filters
         self.conv = nn.Conv1d(
-            in_channels=char_embedding_dim, out_channels=n_filters, kernel_size=kernel_size, stride=1
+            in_channels=config.char_embedding_dim, out_channels=config.n_filters,
+            kernel_size=config.kernel_size, stride=1
         )
-        self.drop_out = nn.Dropout(drop_out)
-        self.char_embedding_dim = char_embedding_dim
+        self.drop_out = nn.Dropout(config.drop_out)
+        self.char_embedding_dim = config.char_embedding_dim
 
-        self.linear_node_edge = nn.Linear(2 * lstm_hidden_size + edge_embedding_dim, combined_embedding_dim)
+        self.linear_node_edge = nn.Linear(2 * config.lstm_hidden_dim + config.edge_embedding_dim,
+                                          config.combined_hidden_dim)
 
-        self.time_step = time_step
+        self.time_step = config.time_step
         self.device = device
-        self.hidden_size = hidden_size
-        self.lstm_hidden_size = lstm_hidden_size
-        self.use_char = use_char
-        self.use_pos = use_pos
-        self.use_word = use_word
-        self.use_state = use_state
+        self.hidden_size = config.hidden_dim
+        self.lstm_hidden_size = config.lstm_hidden_dim
+        self.use_char = config.use_char
+        self.use_pos = config.use_pos
+        self.use_word = config.use_word
+        self.use_distance = config.use_distance
+        self.use_state = config.use_state
 
-        if not self.use_word and self.use_char and self.use_pos:
-            input_size = contextual_word_embedding_dim + n_filters + pos_embedding_dim
-        elif not self.use_word and self.use_char and not self.use_pos:
-            input_size = contextual_word_embedding_dim + n_filters
-        elif not self.use_word and not self.use_char and self.use_pos:
-            input_size = contextual_word_embedding_dim + pos_embedding_dim
-        elif not self.use_word and not self.use_char and not self.use_pos:
-            input_size = contextual_word_embedding_dim
-        elif self.use_word:
-            input_size = word_embedding_dim + n_filters + pos_embedding_dim
+        input_size = config.contextual_word_embedding_dim
+        if self.use_word:
+            input_size += config.word_embedding_dim
+        if self.use_char:
+            input_size += config.n_filters
+        if self.use_pos:
+            input_size += config.pos_embedding_dim
+        if self.use_distance:
+            input_size += config.distance_embedding_dim * 2
 
         self.lstm = nn.LSTM(
             input_size=input_size,
-            hidden_size=lstm_hidden_size,
+            hidden_size=config.lstm_hidden_dim,
             bidirectional=True,
             num_layers=1,
         )
+
+        lstm_hidden_size = config.lstm_hidden_dim
+        hidden_size = config.hidden_dim
+        combined_embedding_dim = config.combined_hidden_dim
 
         self.w_h = nn.Linear(2 * lstm_hidden_size, hidden_size, bias=False)
         self.w_cell = nn.Linear(2 * lstm_hidden_size, hidden_size, bias=False)
@@ -179,9 +170,10 @@ class GraphEncoder(nn.Module):
         self.W_in = nn.Linear(combined_embedding_dim, hidden_size)
         self.W_out = nn.Linear(combined_embedding_dim, hidden_size)
 
-        self.use_attn = use_attn
-        self.in_attn_module = GraphAttnModule(n_heads=in_attn_heads, input_hidden_size=hidden_size)
-        self.out_attn_module = GraphAttnModule(n_heads=out_attn_heads, input_hidden_size=hidden_size)
+        self.use_attn = config.use_attn
+        self.in_attn_module = GraphAttnModule(n_heads=config.in_attn_heads, input_hidden_size=hidden_size)
+        self.out_attn_module = GraphAttnModule(n_heads=config.out_attn_heads, input_hidden_size=hidden_size)
+        self.device = device
 
     def collect_neighbor_representations(self, representations, positions):
 
@@ -200,7 +192,6 @@ class GraphEncoder(nn.Module):
         return collected_tensor
 
     def forward(self, inputs):
-
         (
             elmo_tensor,
             token_ids_tensor,
@@ -215,39 +206,46 @@ class GraphEncoder(nn.Module):
             in_edge_idx_mask,
             out_edge_idx_tensor,
             out_edge_idx_mask,
+            distance_chem_tensor,
+            distance_dis_tensor,
         ) = inputs
 
         bs, batch_length = token_ids_tensor.shape
         max_char_length = char_ids_tensor.shape[2]
-
         word_embedded = self.word_embedding(token_ids_tensor)
-
         char_embedded = self.char_embedding(char_ids_tensor)
         # char_embedded = [batch_size, max_seq_length, max_char_length, char_embedding_dim]
         char_embedded = char_embedded.view(bs * batch_length, max_char_length, self.char_embedding_dim)
         conv_char_embedded = torch.tanh(self.conv(char_embedded.permute(0, 2, 1)))
         conv_char_embedded = torch.max(conv_char_embedded.permute(0, 2, 1), dim=1)[0]
         conv_char_embedded = conv_char_embedded.view(bs, batch_length, self.n_filters)
-
+        distance_chem_embed = self.distance_embedding(distance_chem_tensor)
+        distance_dis_embed = self.distance_embedding(distance_dis_tensor)
         pos_embedded = self.pos_embedding(pos_ids_tensor)
         # input representation
-        if not self.use_word and self.use_char and self.use_pos:
-            concat_word_pos_embedded = self.drop_out(
-                torch.cat([elmo_tensor, conv_char_embedded, pos_embedded], dim=-1)
-            )
-        elif not self.use_word and self.use_char and not self.use_pos:
-            concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, conv_char_embedded], dim=-1))
-        elif not self.use_word and not self.use_char and self.use_pos:
-            concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, pos_embedded], dim=-1))
-        elif not self.use_word and not self.use_char and not self.use_pos:
-            concat_word_pos_embedded = self.drop_out(elmo_tensor)
-        elif self.use_word:
-            concat_word_pos_embedded = self.drop_out(
-                torch.cat([word_embedded, conv_char_embedded, pos_embedded], dim=-1)
-            )
+        input_embed = None
+        if self.use_char and self.use_pos and not self.use_distance:
+            input_embed = torch.cat([elmo_tensor, conv_char_embedded, pos_embedded], dim=-1)
+        if self.use_char and self.use_pos and self.use_distance:
+            input_embed = torch.cat([elmo_tensor, conv_char_embedded, pos_embedded,
+                                     distance_chem_embed, distance_dis_embed], dim=-1)
+        # if not self.use_word and self.use_char and self.use_pos:
+        #     concat_word_pos_embedded = self.drop_out(
+        #         torch.cat([elmo_tensor, conv_char_embedded, pos_embedded], dim=-1)
+        #     )
+        # elif not self.use_word and self.use_char and not self.use_pos:
+        #     concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, conv_char_embedded], dim=-1))
+        # elif not self.use_word and not self.use_char and self.use_pos:
+        #     concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, pos_embedded], dim=-1))
+        # elif not self.use_word and not self.use_char and not self.use_pos:
+        #     concat_word_pos_embedded = self.drop_out(elmo_tensor)
+        # elif self.use_word:
+        #     concat_word_pos_embedded = self.drop_out(
+        #         torch.cat([word_embedded, conv_char_embedded, pos_embedded], dim=-1)
+        #     )
 
         # gather context information for the input sequence with bilstm
-        lstm_output, (_, _) = self.lstm(concat_word_pos_embedded.permute(1, 0, 2))
+        lstm_output, (_, _) = self.lstm(input_embed.permute(1, 0, 2))
         lstm_output = lstm_output.permute(1, 0, 2)
 
         # batch_size, max_seq_length, max_node_in, edge_embedding_dim
@@ -355,32 +353,30 @@ class GraphEncoder(nn.Module):
 class GraphStateLSTM(nn.Module):
     def __init__(
             self,
-            relation_classes,
-            ner_classes,
-            encoder,
-            entity_hidden_size,
-            distance_embedding_dim,
-            use_state,
-            use_ner=False,
-            distance_thresh=0,
-            max_distance=600,
-            drop_out=0.2,
+            edge_vocab_size,
+            pos_vocab_size,
+            char_vocab_size,
+            word_vocab_size,
+            config: GraphLSTMConfig,
             device: str = "cpu"
     ):
-
         super(GraphStateLSTM, self).__init__()
-        self.encoder = encoder
-        self.relation_classes = relation_classes
-        self.ner_classes = ner_classes
-        self.use_ner = use_ner
-        self.use_state = use_state
+        self.encoder = GraphEncoder(config.encoder, edge_vocab_size,
+                                    pos_vocab_size,
+                                    char_vocab_size,
+                                    word_vocab_size, )
+        self.relation_classes = config.relation_classes
+        self.ner_classes = config.ner_classes
+        self.use_ner = config.use_ner
+        self.use_state = config.use_state
 
-        self.encoder_hidden_size = encoder.hidden_size
-        self.encoder_lstm_hidden_size = encoder.lstm_hidden_size
-        self.distance_embedding_dim = distance_embedding_dim
-        self.entity_hidden_size = entity_hidden_size
-        self.distance_thresh = distance_thresh
-        self.use_state = use_state
+        self.encoder_hidden_size = self.encoder.hidden_size
+        self.encoder_lstm_hidden_size = self.encoder.lstm_hidden_size
+        self.distance_embedding_dim = config.distance_embedding_dim if config.use_distance else 0
+        self.entity_hidden_size = config.entity_hidden_dim
+        self.distance_thresh = config.distance_thresh
+        self.use_state = config.use_state
+        entity_hidden_size = config.entity_hidden_dim
 
         if self.use_state:
             self.linear_chem = nn.Linear(self.encoder_hidden_size, entity_hidden_size)
@@ -389,18 +385,18 @@ class GraphStateLSTM(nn.Module):
             self.linear_chem = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
             self.linear_dis = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
 
-        self.sent_represent_dim = self.encoder_hidden_size if use_state else 0
+        self.sent_represent_dim = self.encoder_hidden_size if config.use_state else 0
 
         self.linear_score = nn.Linear(
-            2 * entity_hidden_size + self.sent_represent_dim + distance_embedding_dim, relation_classes
+            2 * entity_hidden_size + self.sent_represent_dim + config.distance_embedding_dim, config.relation_classes
         )
 
-        self.distance_embedding = nn.Embedding(max_distance, distance_embedding_dim)
-        self.drop_out = nn.Dropout(drop_out)
+        self.distance_embedding = nn.Embedding(config.max_distance_mention_mention, config.distance_embedding_dim)
+        self.drop_out = nn.Dropout(config.drop_out)
 
         if self.use_ner:
             self.linear_ner_hidden = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
-            self.linear_ner_out = nn.Linear(entity_hidden_size, ner_classes)
+            self.linear_ner_out = nn.Linear(entity_hidden_size, config.ner_classes)
         self.elmo = Elmo(options_file=elmo_options_file, weight_file=elmo_weight_file, num_output_representations=1)
         self.device = device
 
@@ -435,7 +431,9 @@ class GraphStateLSTM(nn.Module):
             dis_entity_map_tensor,
             dis_entity_map_mask_tensor,
             distance,
-            elmo_input_ids
+            elmo_input_ids,
+            distance_chem_tensor,
+            distance_dis_tensor,
         ) = inputs
 
         elmo_tensor = self.elmo(elmo_input_ids)['elmo_representations'][0]
@@ -454,6 +452,8 @@ class GraphStateLSTM(nn.Module):
                 in_edge_idx_mask,
                 out_edge_idx_tensor,
                 out_edge_idx_mask,
+                distance_chem_tensor,
+                distance_dis_tensor
             ]
         )
 

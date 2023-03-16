@@ -9,17 +9,11 @@ from collections import defaultdict
 from itertools import groupby
 from typing import Any, Dict, List, Tuple, Union
 import numpy as np
+
+from config.cdr_config import CDRConfig
+from utils.constants import CHEMICAL_STRING, DISEASE_STRING
 from utils.spacy_utils import nlp
 
-
-SOME_SPECIFIC_MENTIONS = [
-    "tyrosine-methionine-aspartate-aspartate",
-    "anemia/thrombocytopenia/emesis/rash",
-    "metoprolol/alpha-hydroxymetoprolol",
-    "glutamate/N-methyl-D-aspartate",
-    "cyclosporine-and-prednisone-treated",
-    "platinum/paclitaxel-refractory",
-]
 ner_vocab = {"O": 0, "B_Chemical": 1, "I_Chemical": 2, "B_Disease": 3, "I_Disease": 4}
 ner_idx2label = {0: "O", 1: "B_Chemical", 2: "I_Chemical", 3: "B_Disease", 4: "I_Disease"}
 # idx2word = {k: v for v, k in word_vocab.items()}
@@ -32,7 +26,7 @@ DocAnnotationType = Dict[Any, List[Union[List[List[Any]], Any, Any]]]
 
 
 class CDRCorpus:
-    def __init__(self, config):
+    def __init__(self, config: CDRConfig):
         """[summary]
 
         Args:
@@ -141,19 +135,19 @@ class CDRCorpus:
             train_out_adjacency_dict,
             train_entity_mapping_dict,
             train_all_labels,
-        ) = self.process_dataset(self.config.train_file_path)
+        ) = self.process_dataset(self.config.data.train_file_path)
         (
             dev_in_adjacency_dict,
             dev_out_adjacency_dict,
             dev_entity_mapping_dict,
             dev_all_labels,
-        ) = self.process_dataset(self.config.dev_file_path)
+        ) = self.process_dataset(self.config.data.dev_file_path)
         (
             test_in_adjacency_dict,
             test_out_adjacency_dict,
             test_entity_mapping_dict,
             test_all_labels,
-        ) = self.process_dataset(self.config.test_file_path)
+        ) = self.process_dataset(self.config.data.test_file_path)
         print("Saving vocabs .......")
         vocabs = self.create_vocabs([train_in_adjacency_dict, dev_in_adjacency_dict, test_in_adjacency_dict])
         for vocab_name, vocab in list(zip(self.list_vocab_names, vocabs)):
@@ -168,8 +162,8 @@ class CDRCorpus:
         Returns:
             List[Tuple[Any, Any]]: [description]
         """
-        chem_entity_ids = [anno[-1] for anno in entity_annotations if anno[-2] == self.config.chemical_string]
-        dis_entity_ids = [anno[-1] for anno in entity_annotations if anno[-2] == self.config.disease_string]
+        chem_entity_ids = [anno[-1] for anno in entity_annotations if anno[-2] == CHEMICAL_STRING]
+        dis_entity_ids = [anno[-1] for anno in entity_annotations if anno[-2] == DISEASE_STRING]
 
         chem_entity_ids = list(set(chem_entity_ids))
         dis_entity_ids = list(set(dis_entity_ids))
@@ -391,7 +385,6 @@ class CDRCorpus:
                 token_end = token_start + len(token)
                 if token_start >= start and token_end <= end:
                     entity_mapping[key].append(token)
-            not_found = (len(entity_mapping[key]) == 0)
             if len(entity_mapping[key]) == 0:
                 for token in doc:
                     token_start = token.idx
@@ -399,33 +392,6 @@ class CDRCorpus:
                     if token_start <= start and token_end >= end and mention in token.text:
                         entity_mapping[key].append(token)
                         break
-            if not_found:
-                previous_output = []
-                for token in doc:
-                    token_start = token.idx
-                    token_end = token_start + len(token)
-                    if token_start >= start and token_end <= end:
-                        previous_output.append(token)
-                    elif (
-                            token_start >= start - offset_span and token_end <= end + offset_span) and mention in token.text:
-                        previous_output.append(token)
-                    # hard code for some specific mention
-                    elif token.text in SOME_SPECIFIC_MENTIONS:
-                        previous_output.append(token)
-                if previous_output != entity_mapping[key]:
-                    with open("./invalid_case.txt", "a") as outfile:
-                        outfile.write("_"*30+"\n")
-                        outfile.write(str(en_anno)+"\n")
-                        outfile.write(pud_id+"\n")
-                        outfile.write(abstract[start - 50 : end + 50]+"\n")
-                        outfile.write("*"*30+"\n")
-                        outfile.write(str(previous_output)+"\n")
-                        outfile.write("*"*30+"\n")
-                        outfile.write(str(entity_mapping[key])+"\n")
-                        outfile.write("*"*30+"\n")
-                        outfile.write("_"*30+"\n")
-
-
             try:
                 assert entity_mapping[key] != []
             except:
@@ -450,7 +416,7 @@ class CDRCorpus:
         """
         # remove all annotations of invalid enity (i.e entity id equals -1)
         entity_annotations = self.get_valid_entity_mentions(entity_annotations)
-        if not self.config.use_title:
+        if not self.config.data.use_title:
             raise Exception("Warning is not using title")
             # subtract title offset plus one space
             for en_anno in entity_annotations:
@@ -464,7 +430,7 @@ class CDRCorpus:
         # create doc_adjacency_dict and entity_to_tokens_mapping
 
         in_doc_adjacency_dict, out_doc_adjacency_dict, entity_mapping, doc = self.create_features_one_doc(
-            pud_id, title + " " + abstract if self.config.use_title else abstract, entity_annotations
+            pud_id, title + " " + abstract if self.config.data.use_title else abstract, entity_annotations
         )
 
         # print(chem_dis_pair_ids)
@@ -525,9 +491,9 @@ class CDRCorpus:
         print("original number of negative samples: ", unfilterd_negative_count)
         print("max document length: ", max_doc_length)
 
-        if self.config.mesh_filtering:
+        if self.config.data.mesh_filtering:
             ent_tree_map = defaultdict(list)
-            with codecs.open(self.config.mesh_path, "r", encoding="utf-16-le") as f:
+            with codecs.open(self.config.data.mesh_path, "r", encoding="utf-16-le") as f:
                 lines = [l.rstrip().split("\t") for i, l in enumerate(f) if i > 0]
                 [ent_tree_map[l[1]].append(l[0]) for l in lines]
                 neg_doc_examples, n_filterd_samples = self.filter_with_mesh_vocab(
