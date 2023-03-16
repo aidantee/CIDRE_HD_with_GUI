@@ -104,7 +104,6 @@ class Trainer:
 
                 nn.utils.clip_grad_norm(self.model.parameters(), self.config.train.gradient_clipping)
                 self.optimizer.step()
-                self.scheduler.step()
                 self.optimizer.zero_grad()
                 train_interval_re_loss.append(re_loss.item())
                 train_interval_ner_loss.append(ner_loss.item())
@@ -118,6 +117,8 @@ class Trainer:
                     print(f"Ner loss: {np.mean(train_interval_ner_loss)}")
                     train_interval_re_loss = []
                     train_interval_ner_loss = []
+
+            self.scheduler.step()
             print(f"Finish epoch {i}")
             print(f"Re loss: {np.mean(train_re_loss)}")
             print(f"Ner loss: {np.mean(train_ner_loss)}")
