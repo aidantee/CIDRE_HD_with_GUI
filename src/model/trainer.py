@@ -125,8 +125,9 @@ class Trainer:
             train_re_loss = []
             train_ner_loss = []
             if dev_loader is not None:
-                # TODO eval
-                pass
+                re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = self.evaluate(dev_loader)
+                print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+                      f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
 
     def save_model(self):
         torch.save(self.model.state_dict(), os.path.join("./checkpoints",
