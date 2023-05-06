@@ -9,11 +9,10 @@ import os
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser()
+    # parser = argparse.ArgumentParser()
     # parser.add_argument("--config", default=str, help="path to the config.json file", type=str)
-    parser.add_argument("--type", default=str, help="type of dataset", type=str)
-
-    args = parser.parse_args()
+    # parser.add_argument("--type", default=str, help="type of dataset", type=str)
+    # args = parser.parse_args()
     config_file_path = "config.json"
     config = CDRConfig.from_json(config_file_path)
     corpus = CDRCorpus(config)
