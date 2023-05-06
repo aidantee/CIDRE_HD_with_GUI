@@ -1,0 +1,75 @@
+{
+    "experiment": "test",
+    "experiment_dir": "checkpoints",
+    "train": {
+        "optimizer": {
+            "name": "adamw",
+            "lr": 0.0007,
+            "weight_decay": 0.01
+        },
+        "loss": {
+            "name": "bce",
+            "arguments": {
+                "pos_weight": 1
+            }
+        },
+        "lr_scheduler": {
+            "arguments": {
+                "warmup_steps": 10000
+            },
+            "name": "cosine_with_warmup"
+        },
+        "gradient_clipping": 5,
+        "batch_size": 8,
+        "batch_max_tokens": null,
+        "eval_interval": 10000,
+        "log_interval": 50,
+        "num_epochs": 3
+    },
+    "model": {
+        "encoder": {
+            "contextual_word_embedding_dim": 1024,
+            "word_embedding_dim": 200,
+            "edge_embedding_dim": 10,
+            "char_embedding_dim": 30,
+            "pos_embedding_dim": 10,
+            "max_distance_mention_token": 100,
+            "distance_embedding_dim": 50,
+            "combined_hidden_dim": 200,
+            "lstm_hidden_dim": 150,
+            "hidden_dim": 150,
+            "in_attn_heads": 2,
+            "out_attn_heads": 5,
+            "use_char": true,
+            "use_pos": true,
+            "use_word": false,
+            "use_distance": false,
+            "use_state": true,
+            "use_attn": true,
+            "kernel_size": 5,
+            "n_filters": 30,
+            "time_step": 6,
+            "drop_out": 0.2
+        },
+        "relation_classes": 2,
+        "ner_classes": 5,
+        "entity_hidden_dim": 100,
+        "max_distance_mention_mention": 600,
+        "distance_embedding_dim": 50,
+        "use_distance": true,
+        "use_ner": true,
+        "use_state": true,
+        "drop_out": 0.2,
+        "distance_thresh": 0
+
+    },
+    "data": {
+        "train_file_path": "./data/rawdata/CDR_TrainingSet.PubTator.txt",
+        "dev_file_path": "./data/rawdata/CDR_DevelopmentSet.PubTator.txt",
+        "test_file_path": "./data/rawdata/CDR_TestSet.PubTator.txt",
+        "use_title": true,
+        "mesh_filtering": true,
+        "mesh_path": "./data/2017MeshTree.txt",
+        "saved_data_path": "./data/prepared_data/"
+    }
+}

@@ -19,52 +19,24 @@ class Trainer:
     def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, pos_weight: float = 1):
         self.corpus = corpus
         self.config = config
-        self.encoder = GraphEncoder(
-            time_step=config.time_step,
-            word_vocab_size=len(corpus.word_vocab),
-            edge_vocab_size=len(corpus.rel_vocab),
-            pos_vocab_size=len(corpus.pos_vocab),
-            char_vocab_size=len(corpus.char_vocab),
-            contextual_word_embedding_dim=config.elmo_hidden_size,
-            word_embedding_dim=config.word_embedding_dim,
-            edge_embedding_dim=config.rel_embedding_dim,
-            pos_embedding_dim=config.pos_embedding_dim,
-            combined_embedding_dim=config.combined_embedding_dim,
-            in_attn_heads=config.in_attn_heads,
-            out_attn_heads=config.out_attn_heads,
-            use_attn=config.use_attn,
-            drop_out=config.drop_out,
-            hidden_size=config.encoder_hidden_size,
-            lstm_hidden_size=config.lstm_hidden_size,
-            use_char=config.use_char,
-            use_pos=config.use_pos,
-            use_word=config.use_word,
-            use_state=config.use_state,
-            device=device
-        )
         self.model = GraphStateLSTM(
-            relation_classes=config.relation_classes,
-            ner_classes=config.ner_classes,
-            encoder=self.encoder,
-            entity_hidden_size=config.entity_hidden_size,
-            max_distance=config.max_distance,
-            distance_embedding_dim=config.distance_embedding_dim,
-            use_ner=config.use_ner,
-            use_state=config.use_state,
-            drop_out=config.drop_out,
-            distance_thresh=config.distance_thresh,
+            len(corpus.rel_vocab),
+            len(corpus.pos_vocab),
+            len(corpus.char_vocab),
+            len(corpus.word_vocab),
+            config.model,
             device=device
         )
         self.device = device
         self.weight_label = torch.Tensor([1, pos_weight])
-        self.optimizer = optim.AdamW(self.model.parameters(), lr=config.lr, weight_decay=0.001)
+        self.optimizer = optim.AdamW(self.model.parameters(), lr=config.train.optimizer.lr, weight_decay=0.001)
         self.scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer, gamma=0.5)
         if device == "cuda":
             self.model = self.model.cuda()
             self.weight_label = self.weight_label.cuda()
         self.re_criterion = nn.CrossEntropyLoss(weight=self.weight_label)
         self.ner_criterion = nn.CrossEntropyLoss()
-        self.model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
+        # self.model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
         self.log_interval = 100
 
     def evaluate(self, dataloader: DataLoader):
@@ -109,7 +81,7 @@ class Trainer:
 
     def train(self, train_loader: DataLoader, dev_loader: Optional[DataLoader] = None):
         train_step = 0
-        for i in range(self.config.epochs):
+        for i in range(self.config.train.num_epochs):
             train_re_loss = []
             train_ner_loss = []
             train_interval_re_loss = []
@@ -122,22 +94,21 @@ class Trainer:
                 inputs = batch[:-2]
                 ner_labels = batch[-2]
                 labels = batch[-1]
-                assert self.config.use_ner
+                assert self.config.model.use_ner
                 ner_logits, re_logits = self.model(inputs)
                 re_loss = self.re_criterion(re_logits, labels)
                 ner_loss = self.ner_criterion(torch.permute(ner_logits, (0, 2, 1)), ner_labels)
 
                 total_loss = re_loss + ner_loss
                 total_loss.backward()
-                if train_step % self.config.gradient_accumalation == 0:
-                    nn.utils.clip_grad_norm(self.model.parameters(), self.config.gradient_clipping)
-                    self.optimizer.step()
-                    self.scheduler.step()
-                    self.optimizer.zero_grad()
-                    train_interval_re_loss.append(re_loss.item())
-                    train_interval_ner_loss.append(ner_loss.item())
-                    train_re_loss.append(re_loss.item())
-                    train_ner_loss.append(ner_loss.item())
+
+                nn.utils.clip_grad_norm(self.model.parameters(), self.config.train.gradient_clipping)
+                self.optimizer.step()
+                self.optimizer.zero_grad()
+                train_interval_re_loss.append(re_loss.item())
+                train_interval_ner_loss.append(ner_loss.item())
+                train_re_loss.append(re_loss.item())
+                train_ner_loss.append(ner_loss.item())
 
                 train_step += 1
                 if train_step % self.log_interval == 0:
@@ -146,15 +117,18 @@ class Trainer:
                     print(f"Ner loss: {np.mean(train_interval_ner_loss)}")
                     train_interval_re_loss = []
                     train_interval_ner_loss = []
+
+            self.scheduler.step()
             print(f"Finish epoch {i}")
             print(f"Re loss: {np.mean(train_re_loss)}")
             print(f"Ner loss: {np.mean(train_ner_loss)}")
             train_re_loss = []
             train_ner_loss = []
             if dev_loader is not None:
-                # TODO eval
-                pass
+                re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = self.evaluate(dev_loader)
+                print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+                      f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
 
     def save_model(self):
-        torch.save(self.model.state_dict(), os.path.join(self.config.checkpoint_path,
+        torch.save(self.model.state_dict(), os.path.join("./checkpoints",
                                                          f"model_{str(datetime.datetime.now())}"))

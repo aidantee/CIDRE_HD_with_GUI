@@ -139,11 +139,7 @@ def get_cdr_dataset(corpus: CDRCorpus, saved_folder_path: str, data_type: str) -
                          all_doc_char_ids,
                          all_entity_mapping,
                          all_ner_label_ids,
-                         all_labels,
-                         corpus.word_vocab,
-                         corpus.char_vocab,
-                         corpus.rel_vocab,
-                         corpus.pos_vocab)
+                         all_labels)
     return dataset
 
 
@@ -158,10 +154,6 @@ def concat_dataset(datasets: List[CDRDataset]) -> CDRDataset:
         {k: v for dataset in datasets for k, v in dataset.all_char_ids.items()},
         {k: v for dataset in datasets for k, v in dataset.all_entity_mapping.items()},
         {k: v for dataset in datasets for k, v in dataset.all_ner_label_ids.items()},
-        [label for dataset in datasets for label in dataset.labels],
-        datasets[0].word_vocab,
-        datasets[0].char_vocab,
-        datasets[0].rel_vocab,
-        datasets[0].pos_vocab
+        [label for dataset in datasets for label in dataset.labels]
     )
     return res

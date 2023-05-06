@@ -13,7 +13,7 @@ class Collator:
                  max_char_length=96,
                  node_pad_idx=4,
                  entity_pad_idx=5,
-                 edge_pad_idx=10):
+                 edge_pad_idx=10, max_distance=100):
         self.word_vocab = word_vocab
         self.idx2word = {k: v for v, k in word_vocab.items()}
         self.pos_vocab = pos_vocab
@@ -28,6 +28,7 @@ class Collator:
         self.node_pad_idx = node_pad_idx
         self.entity_pad_idx = entity_pad_idx
         self.edge_pad_idx = edge_pad_idx
+        self.max_distance = max_distance
 
     def collate(self, batch):
         (
@@ -43,10 +44,30 @@ class Collator:
             list_ner_label_ids,
             list_label_ids,
         ) = list(zip(*batch))
-
+        #         print(list_chem_en_map)
+        #         print(list_dis_en_map)
+        batch_size = len(list_token_ids)
         batch_max_length = -1
         for token_ids in list_token_ids:
             batch_max_length = max(len(token_ids), batch_max_length)
+
+        distance_chem = [[self.max_distance - 1 for _ in range(batch_max_length)] for _ in range(batch_size)]
+        distance_dis = [[self.max_distance - 1 for _ in range(batch_max_length)] for _ in range(batch_size)]
+
+        for batch_id, chem_en_map in enumerate(list_chem_en_map):
+            for mention in chem_en_map:
+                for token_id in mention:
+                    for i in range(batch_max_length):
+                        distance_chem[batch_id][i] = min(distance_chem[batch_id][i], abs(i - token_id))
+
+        for batch_id, dis_en_map in enumerate(list_dis_en_map):
+            for mention in dis_en_map:
+                for token_id in mention:
+                    for i in range(batch_max_length):
+                        distance_dis[batch_id][i] = min(distance_dis[batch_id][i], abs(i - token_id))
+
+        distance_chem_tensor = torch.tensor(distance_chem)
+        distance_dis_tensor = torch.tensor(distance_dis)
 
         # ok
         token_ids_tensor, token_ids_mask_tensor = pad_sequences(
@@ -61,7 +82,6 @@ class Collator:
             list_char_ids, batch_max_length, self.max_char_length, self.char_vocab["<PAD>"]
         )
 
-        # TODO: elmo input tensor
         list_texts = []
         for token_ids in list_token_ids:
             text = []
@@ -122,6 +142,8 @@ class Collator:
             dis_entity_map_mask_tensor,
             start_distant,
             elmo_input_tensor,
+            distance_chem_tensor,
+            distance_dis_tensor,
             ner_label_ids_tensor,
             label_ids_tensor,
         )

@@ -4,3 +4,4 @@
 src/data/prepared_data/
 **/*.ipynb
 src/invalid_case.txt
+src/runs
