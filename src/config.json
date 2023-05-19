@@ -58,7 +58,6 @@
         "distance_embedding_dim": 50,
         "use_distance": true,
         "use_ner": true,
-        "use_state": true,
         "drop_out": 0.2,
         "distance_thresh": 0
 

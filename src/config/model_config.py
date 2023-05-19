@@ -95,7 +95,7 @@ class GraphLSTMConfig(BaseConfig):
                  max_distance_mention_mention,
                  distance_embedding_dim,
                  use_ner,
-                 use_state, drop_out,
+                 drop_out,
                  distance_thresh,
                  use_distance):
         self.encoder = encoder
@@ -105,7 +105,6 @@ class GraphLSTMConfig(BaseConfig):
         self.max_distance_mention_mention = max_distance_mention_mention
         self.distance_embedding_dim = distance_embedding_dim
         self.use_ner = use_ner
-        self.use_state = use_state
         self.drop_out = drop_out
         self.distance_thresh = distance_thresh
         self.use_distance = use_distance
@@ -120,7 +119,6 @@ class GraphLSTMConfig(BaseConfig):
                                  d['max_distance_mention_mention'],
                                  d['distance_embedding_dim'],
                                  d['use_ner'],
-                                 d['use_state'],
                                  d['drop_out'],
                                  d['distance_thresh'],
                                  d['use_distance'])

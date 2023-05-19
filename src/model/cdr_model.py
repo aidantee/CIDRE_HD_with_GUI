@@ -368,14 +368,13 @@ class GraphStateLSTM(nn.Module):
         self.relation_classes = config.relation_classes
         self.ner_classes = config.ner_classes
         self.use_ner = config.use_ner
-        self.use_state = config.use_state
+        self.use_state = config.encoder.use_state
 
         self.encoder_hidden_size = self.encoder.hidden_size
         self.encoder_lstm_hidden_size = self.encoder.lstm_hidden_size
         self.distance_embedding_dim = config.distance_embedding_dim if config.use_distance else 0
         self.entity_hidden_size = config.entity_hidden_dim
         self.distance_thresh = config.distance_thresh
-        self.use_state = config.use_state
         entity_hidden_size = config.entity_hidden_dim
 
         if self.use_state:
@@ -385,7 +384,7 @@ class GraphStateLSTM(nn.Module):
             self.linear_chem = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
             self.linear_dis = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
 
-        self.sent_represent_dim = self.encoder_hidden_size if config.use_state else 0
+        self.sent_represent_dim = self.encoder_hidden_size if self.use_state else 0
 
         self.linear_score = nn.Linear(
             2 * entity_hidden_size + self.sent_represent_dim + config.distance_embedding_dim, config.relation_classes
