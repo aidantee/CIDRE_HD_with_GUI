@@ -27,6 +27,8 @@ class Trainer:
             config.model,
             device=device
         )
+        num_param = sum([param.numel() for param in self.model.parameters()])
+        print(f"Num model param {num_param}")
         self.device = device
         self.weight_label = torch.Tensor([1, pos_weight])
         self.optimizer = optim.AdamW(self.model.parameters(), lr=config.train.optimizer.lr, weight_decay=0.001)
