@@ -367,7 +367,6 @@ class GraphStateLSTM(nn.Module):
                                     word_vocab_size, )
         self.relation_classes = config.relation_classes
         self.ner_classes = config.ner_classes
-        self.use_ner = config.use_ner
         self.use_state = config.encoder.use_state
 
         self.encoder_hidden_size = self.encoder.hidden_size
@@ -393,9 +392,9 @@ class GraphStateLSTM(nn.Module):
         self.distance_embedding = nn.Embedding(config.max_distance_mention_mention, config.distance_embedding_dim)
         self.drop_out = nn.Dropout(config.drop_out)
 
-        if self.use_ner:
-            self.linear_ner_hidden = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
-            self.linear_ner_out = nn.Linear(entity_hidden_size, config.ner_classes)
+        self.linear_ner_hidden = nn.Linear(self.encoder_lstm_hidden_size * 2, entity_hidden_size)
+        self.linear_ner_out = nn.Linear(entity_hidden_size, config.ner_classes)
+
         self.elmo = Elmo(options_file=elmo_options_file, weight_file=elmo_weight_file, num_output_representations=1)
         self.device = device
 
@@ -462,9 +461,8 @@ class GraphStateLSTM(nn.Module):
         sent_represent = torch.max(node_hidden, dim=1)[0]
         sent_represent = sent_represent.unsqueeze(1).unsqueeze(1).repeat(1, max_mentions, max_mentions, 1)
 
-        if self.use_ner:
-            ner_hiddens = torch.tanh(self.linear_ner_hidden(self.drop_out(lstm_output)))
-            ner_logits = self.linear_ner_out(ner_hiddens)
+        ner_hiddens = torch.tanh(self.linear_ner_hidden(self.drop_out(lstm_output)))
+        ner_logits = self.linear_ner_out(ner_hiddens)
 
         rel_representations = self.drop_out(node_hidden)
 
@@ -533,7 +531,4 @@ class GraphStateLSTM(nn.Module):
         score = score.masked_fill(distance_mask.unsqueeze(-1) == 0, -1e10)
         final_score = torch.max(score, dim=1)[0]
 
-        if self.use_ner:
-            return ner_logits, final_score
-
-        return final_score
+        return ner_logits, final_score

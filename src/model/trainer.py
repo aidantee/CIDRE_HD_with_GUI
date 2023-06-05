@@ -108,12 +108,15 @@ class Trainer:
                 inputs = batch[:-2]
                 ner_labels = batch[-2]
                 labels = batch[-1]
-                assert self.config.model.use_ner
+
                 ner_logits, re_logits = self.model(inputs)
                 re_loss = self.re_criterion(re_logits, labels)
                 ner_loss = self.ner_criterion(torch.permute(ner_logits, (0, 2, 1)), ner_labels)
 
-                total_loss = re_loss + ner_loss
+                if self.config.model.use_ner:
+                    total_loss = re_loss + ner_loss
+                else:
+                    total_loss = re_loss
                 total_loss.backward()
 
                 nn.utils.clip_grad_norm(self.model.parameters(), self.config.train.gradient_clipping)
