@@ -1,5 +1,5 @@
 {
-    "experiment": "test",
+    "experiment": "cdr",
     "experiment_dir": "checkpoints",
     "train": {
         "optimizer": {

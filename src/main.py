@@ -1,7 +1,5 @@
 import argparse
-from utils.lr_scheduler import get_cosine_warm_up_lr_scheduler
 from corpus.cdr_corpus import CDRCorpus
-from dataset.cdr_dataset import CDRDataset
 from config.cdr_config import CDRConfig
 from dataset.utils import get_cdr_dataset, concat_dataset
 from dataset.collator import Collator
@@ -10,6 +8,10 @@ from model.trainer import Trainer
 import torch
 import random
 import numpy as np
+import re
+from datetime import datetime
+import os
+import json
 
 
 def seed_all(seed):
@@ -17,6 +19,16 @@ def seed_all(seed):
     random.seed(seed)
     torch.cuda.manual_seed(seed)
     torch.manual_seed(seed)
+
+
+def setup_experiment_dir(config: CDRConfig):
+    experiment_name = re.sub(r"\s", "_", config.experiment)
+    experiment_subdir = f"{experiment_name}_{datetime.today().strftime('%Y_%m_%d_%H_%M_%S')}"
+    experiment_dir = os.path.join(config.experiment_dir, experiment_subdir)
+    os.makedirs(experiment_dir)
+    with open(f"{experiment_dir}/config.json", "w") as outfile:
+        json.dump(json.loads(str(config)), outfile, indent=4, ensure_ascii=False)
+    return experiment_dir
 
 
 if __name__ == "__main__":
@@ -27,6 +39,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     seed_all(args.seed)
     config = CDRConfig.from_json(args.config)
+    experiment_dir = setup_experiment_dir(config)
     corpus = CDRCorpus(config)
     corpus.load_all_vocabs(config.data.saved_data_path)
     train_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "train")
@@ -34,7 +47,7 @@ if __name__ == "__main__":
     test_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "test")
     device = "cuda"
     # device = "cpu"
-    trainer = Trainer(corpus, config, device)
+    trainer = Trainer(corpus, config, device, experiment_dir)
     if args.concat:
         collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
         train_dataset = concat_dataset([train_dataset, dev_dataset])

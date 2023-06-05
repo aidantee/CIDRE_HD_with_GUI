@@ -16,7 +16,8 @@ from utils.metrics import compute_rel_f1, compute_NER_f1_macro, decode_ner, comp
 
 
 class Trainer:
-    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, pos_weight: float = 1):
+    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, experiment_dir: str, pos_weight: float = 1):
+        self.experiment_dir = experiment_dir
         self.corpus = corpus
         self.config = config
         self.model = GraphStateLSTM(
@@ -49,10 +50,12 @@ class Trainer:
         target_list = []
         ner_target_list = []
         ner_pred_list = []
+        elapsed_times = []
         with torch.no_grad():
             print("Start evaluate")
             for batch in tqdm(dataloader):
                 if self.device == "cuda":
+                    start = time.time()
                     batch = [elem.cuda() if isinstance(elem, Tensor) else elem for elem in batch]
                     inputs = batch[:-2]
                     ner_labels = batch[-2]
@@ -77,6 +80,15 @@ class Trainer:
 
                     re_losses.append(re_loss.item())
                     ner_losses.append(ner_loss.item())
+                    end = time.time()
+                    elapsed_times.append(end - start)
+
+        elapsed_times = np.array(elapsed_times)
+        print(f"Inference time: \n"
+              f"Min: {np.min(elapsed_times)}\n"
+              f"Max: {np.max(elapsed_times)}\n"
+              f"Mean: {np.mean(elapsed_times)}\n"
+              f"Median: {np.median(elapsed_times)}\n")
         ner_f1 = compute_NER_f1_macro(ner_pred_list, ner_target_list)
         re_precision, re_recall, re_f1, _ = compute_results(predict_list, target_list)
         return np.mean(re_losses), np.mean(ner_losses), ner_f1, re_precision, re_recall, re_f1
@@ -132,5 +144,8 @@ class Trainer:
                       f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
 
     def save_model(self):
-        torch.save(self.model.state_dict(), os.path.join("./checkpoints",
-                                                         f"model_{str(datetime.datetime.now())}"))
+        ckpt = {
+            "model": self.model.state_dict()
+        }
+        save_path = f"{self.experiment_dir}/model.pth"
+        torch.save(ckpt, f=save_path)
