@@ -223,27 +223,16 @@ class GraphEncoder(nn.Module):
         distance_dis_embed = self.distance_embedding(distance_dis_tensor)
         pos_embedded = self.pos_embedding(pos_ids_tensor)
         # input representation
-        input_embed = None
-        if self.use_char and self.use_pos and not self.use_distance:
-            input_embed = torch.cat([elmo_tensor, conv_char_embedded, pos_embedded], dim=-1)
-        if self.use_char and self.use_pos and self.use_distance:
-            input_embed = torch.cat([elmo_tensor, conv_char_embedded, pos_embedded,
-                                     distance_chem_embed, distance_dis_embed], dim=-1)
-        # if not self.use_word and self.use_char and self.use_pos:
-        #     concat_word_pos_embedded = self.drop_out(
-        #         torch.cat([elmo_tensor, conv_char_embedded, pos_embedded], dim=-1)
-        #     )
-        # elif not self.use_word and self.use_char and not self.use_pos:
-        #     concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, conv_char_embedded], dim=-1))
-        # elif not self.use_word and not self.use_char and self.use_pos:
-        #     concat_word_pos_embedded = self.drop_out(torch.cat([elmo_tensor, pos_embedded], dim=-1))
-        # elif not self.use_word and not self.use_char and not self.use_pos:
-        #     concat_word_pos_embedded = self.drop_out(elmo_tensor)
-        # elif self.use_word:
-        #     concat_word_pos_embedded = self.drop_out(
-        #         torch.cat([word_embedded, conv_char_embedded, pos_embedded], dim=-1)
-        #     )
+        # TODO: refactor
+        input_embed = elmo_tensor
+        if self.use_char:
+            input_embed = torch.cat([input_embed, conv_char_embedded], dim=-1)
+        if self.use_pos:
+            input_embed = torch.cat([input_embed, pos_embedded], dim=-1)
+        if self.use_distance:
+            input_embed = torch.cat([input_embed, distance_chem_embed, distance_dis_embed], dim=-1)
 
+        # input_embed = self.drop_out(input_embed)
         # gather context information for the input sequence with bilstm
         lstm_output, (_, _) = self.lstm(input_embed.permute(1, 0, 2))
         lstm_output = lstm_output.permute(1, 0, 2)
