@@ -373,25 +373,46 @@ class CDRCorpus:
 
         # mapping entity spans to document ids
         entity_mapping = {}
-
+        n_sents = len(list(doc.sents))
+        has_dis_mask = [False for i in range(n_sents)]
+        has_chem_mask = [False for i in range(n_sents)]
         for en_anno in entity_annotations:
-
             start, end, mention, label, kg_id = en_anno
             key = (start, end, mention, label, kg_id)
             entity_mapping[key] = []
-
+            current_sent = 0
             for token in doc:
                 token_start = token.idx
                 token_end = token_start + len(token)
                 if token_start >= start and token_end <= end:
                     entity_mapping[key].append(token)
+                    if label == "Chemical":
+                        has_chem_mask[current_sent] = True
+                    else:
+                        has_dis_mask[current_sent] = True
+                if token.is_sent_end:
+                    current_sent += 1
             if len(entity_mapping[key]) == 0:
+                current_sent = 0
                 for token in doc:
                     token_start = token.idx
                     token_end = token_start + len(token)
                     if token_start <= start and token_end >= end and mention in token.text:
                         entity_mapping[key].append(token)
+                        if label == "Chemical":
+                            has_chem_mask[current_sent] = True
+                        else:
+                            has_dis_mask[current_sent] = True
                         break
+                    if token.is_sent_end:
+                        current_sent += 1
+
+        for i in range(n_sents):
+            if has_chem_mask[i] and has_dis_mask[i]:
+                with open("invalid_pud_id.txt", "a") as outfile:
+                    outfile.write(pud_id + "\n")
+                break
+
             try:
                 assert entity_mapping[key] != []
             except:

@@ -83,7 +83,6 @@ class GraphLSTMConfig(BaseConfig):
                           "max_distance_mention_mention",
                           "distance_embedding_dim",
                           "use_ner",
-                          "use_state",
                           "drop_out",
                           "distance_thresh",
                           "use_distance"}
