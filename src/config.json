@@ -43,7 +43,7 @@
             "use_char": true,
             "use_pos": true,
             "use_word": false,
-            "use_distance": false,
+            "use_distance": true,
             "use_state": true,
             "use_attn": true,
             "kernel_size": 5,

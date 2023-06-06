@@ -6,4 +6,5 @@ src/data/prepared_data/
 src/invalid_case.txt
 src/runs
 src/*.txt
-src/checkpoints/
+src/checkpoints
+!src/checkpoints/model.txt

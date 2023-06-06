@@ -36,9 +36,23 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="./config.json")
     parser.add_argument("--seed", default=22, type=int)
     parser.add_argument("--concat", action="store_true")
+    parser.add_argument("--use_ner", action="store_true")
+    parser.add_argument("--use_state", action="store_true")
+    parser.add_argument("--use_pos", action="store_true")
+    parser.add_argument("--use_char", action="store_true")
+    parser.add_argument("--use_distance", action="store_true")
     args = parser.parse_args()
     seed_all(args.seed)
     config = CDRConfig.from_json(args.config)
+
+    config.model.use_ner = args.use_ner
+    config.model.encoder.use_state = args.use_state
+    config.model.encoder.use_pos = args.use_pos
+    config.model.encoder.use_char = args.use_char
+    config.model.encoder.use_distance = args.use_distance
+
+    print(config)
+
     experiment_dir = setup_experiment_dir(config)
     corpus = CDRCorpus(config)
     corpus.load_all_vocabs(config.data.saved_data_path)
