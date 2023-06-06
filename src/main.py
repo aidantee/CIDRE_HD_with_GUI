@@ -61,7 +61,7 @@ if __name__ == "__main__":
         re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
         print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
               f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
-        with open("result.txt", "a") as outfile:
+        with open(os.path.join(experiment_dir, "result.txt"), "a") as outfile:
             outfile.write("\n\nRESULT")
             outfile.write(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
                           f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}" + "\n")
@@ -74,3 +74,4 @@ if __name__ == "__main__":
             dev_dataset, batch_size=config.train.batch_size, shuffle=True, collate_fn=collator.collate
         )
         trainer.train(train_loader, dev_loader)
+    trainer.save_model()
