@@ -46,10 +46,12 @@ if __name__ == "__main__":
     config = CDRConfig.from_json(args.config)
 
     config.model.use_ner = args.use_ner
-    config.model.use_state = args.use_state
-    config.model.use_pos = args.use_pos
-    config.model.use_char = args.use_char
+    config.model.encoder.use_state = args.use_state
+    config.model.encoder.use_pos = args.use_pos
+    config.model.encoder.use_char = args.use_char
     config.model.encoder.use_distance = args.use_distance
+
+    print(config)
 
     experiment_dir = setup_experiment_dir(config)
     corpus = CDRCorpus(config)
