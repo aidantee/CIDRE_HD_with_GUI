@@ -1,7 +1,7 @@
 import argparse
 from corpus.cdr_corpus import CDRCorpus
 from config.cdr_config import CDRConfig
-from dataset.utils import get_cdr_dataset, concat_dataset
+from dataset.utils import get_cdr_dataset, concat_dataset, split_train_test
 from dataset.collator import Collator
 from torch.utils.data import DataLoader
 from model.trainer import Trainer
@@ -36,20 +36,21 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="./config.json")
     parser.add_argument("--seed", default=22, type=int)
     parser.add_argument("--concat", action="store_true")
-    parser.add_argument("--use_ner", action="store_true")
+    # parser.add_argument("--use_ner", action="store_true")
     parser.add_argument("--use_state", action="store_true")
-    parser.add_argument("--use_pos", action="store_true")
-    parser.add_argument("--use_char", action="store_true")
-    parser.add_argument("--use_distance", action="store_true")
+    # parser.add_argument("--use_pos", action="store_true")
+    # parser.add_argument("--use_char", action="store_true")
+    # parser.add_argument("--use_distance", action="store_true")
+    # parser.add_argument("--train_inter", action="store_true")
     args = parser.parse_args()
     seed_all(args.seed)
     config = CDRConfig.from_json(args.config)
 
-    config.model.use_ner = args.use_ner
+    # config.model.use_ner = args.use_ner
     config.model.encoder.use_state = args.use_state
-    config.model.encoder.use_pos = args.use_pos
-    config.model.encoder.use_char = args.use_char
-    config.model.encoder.use_distance = args.use_distance
+    # config.model.encoder.use_pos = args.use_pos
+    # config.model.encoder.use_char = args.use_char
+    # config.model.encoder.use_distance = args.use_distance
 
     print(config)
 
@@ -62,6 +63,28 @@ if __name__ == "__main__":
     device = "cuda"
     # device = "cpu"
     trainer = Trainer(corpus, config, device, experiment_dir)
+
+    # if args.train_inter:
+    #     collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
+    #     dataset = concat_dataset([train_dataset, dev_dataset, test_dataset])
+    #     with open("./train_pud_id.txt", "r") as infile:
+    #         train_pud_ids = infile.readlines()
+    #     train_pud_ids = [idx.strip() for idx in train_pud_ids]
+    #     train_dataset, test_dataset = split_train_test(dataset, train_pud_ids)
+    #     train_loader = DataLoader(
+    #         train_dataset, batch_size=config.train.batch_size, shuffle=True, collate_fn=collator.collate
+    #     )
+    #     test_loader = DataLoader(
+    #         test_dataset, batch_size=config.train.batch_size, shuffle=False, collate_fn=collator.collate
+    #     )
+    #     trainer.train(train_loader)
+    #     re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
+    #     print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+    #           f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
+    #     with open(os.path.join(experiment_dir, "result.txt"), "a") as outfile:
+    #         outfile.write("\n\nRESULT")
+    #         outfile.write(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+    #                       f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}" + "\n")
     if args.concat:
         collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
         train_dataset = concat_dataset([train_dataset, dev_dataset])

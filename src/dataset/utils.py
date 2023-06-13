@@ -157,3 +157,31 @@ def concat_dataset(datasets: List[CDRDataset]) -> CDRDataset:
         [label for dataset in datasets for label in dataset.labels]
     )
     return res
+
+
+def split_train_test(dataset: CDRDataset, train_pud_ids: List[str]):
+    train_dataset = CDRDataset(
+        {k: v for k, v in dataset.all_doc_token_ids.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_in_nodes_idx.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_out_nodes_idx.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_in_edge_label_ids.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_out_edge_label_ids.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_pos_ids.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_char_ids.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_entity_mapping.items() if k in train_pud_ids},
+        {k: v for k, v in dataset.all_ner_label_ids.items() if k in train_pud_ids},
+        [label for label in dataset.labels if label[0] in train_pud_ids]
+    )
+    test_data = CDRDataset(
+        {k: v for k, v in dataset.all_doc_token_ids.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_in_nodes_idx.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_out_nodes_idx.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_in_edge_label_ids.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_out_edge_label_ids.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_pos_ids.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_char_ids.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_entity_mapping.items() if k not in train_pud_ids},
+        {k: v for k, v in dataset.all_ner_label_ids.items() if k not in train_pud_ids},
+        [label for label in dataset.labels if label[0] not in train_pud_ids]
+    )
+    return train_dataset, test_data

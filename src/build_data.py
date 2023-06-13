@@ -19,15 +19,15 @@ if __name__ == "__main__":
 
     # if you still dont have the vocabs for the dataset. You need to call this method firstly.
     print("Preparing all vocabs .....")
-    corpus.prepare_all_vocabs(config.data.saved_data_path)
+    corpus.prepare_all_vocabs(config.data.saved_data_path, train_inter=True)
 
     print("Preparing all data ....")
     corpus.prepare_features_for_one_dataset(
-        config.data.train_file_path, config.data.saved_data_path, "train"
+        config.data.train_file_path, config.data.saved_data_path, "train", train_inter=True
     )
     corpus.prepare_features_for_one_dataset(
-        config.data.test_file_path, config.data.saved_data_path, "test"
+        config.data.test_file_path, config.data.saved_data_path, "test", train_inter=True
     )
     corpus.prepare_features_for_one_dataset(
-        config.data.dev_file_path, config.data.saved_data_path, "dev"
+        config.data.dev_file_path, config.data.saved_data_path, "dev", train_inter=True
     )
