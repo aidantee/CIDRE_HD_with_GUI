@@ -8,3 +8,4 @@ src/runs
 src/checkpoints
 !src/checkpoints/model.txt
 src/result.txt
+src/train_pud_id.txt
