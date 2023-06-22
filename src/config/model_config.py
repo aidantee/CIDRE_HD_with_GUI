@@ -27,9 +27,10 @@ class GraphEncoderConfig(BaseConfig):
                  char_embedding_dim, edge_embedding_dim, pos_embedding_dim,
                  max_distance_mention_token, distance_embedding_dim,
                  combined_hidden_dim, lstm_hidden_dim, hidden_dim,
-                 in_attn_heads, out_attn_heads,
+                 in_attn_heads, out_attn_heads, use_elmo,
                  use_char, use_pos, use_word, use_distance, use_state, use_attn,
                  kernel_size, n_filters, time_step, drop_out):
+        self.use_elmo = use_elmo
         self.contextual_word_embedding_dim = contextual_word_embedding_dim
         self.word_embedding_dim = word_embedding_dim
         self.char_embedding_dim = char_embedding_dim
@@ -68,6 +69,7 @@ class GraphEncoderConfig(BaseConfig):
                                     d['hidden_dim'],
                                     d['in_attn_heads'],
                                     d['out_attn_heads'],
+                                    d.get('use_elmo', True),
                                     d['use_char'], d['use_pos'], d['use_word'],
                                     d['use_distance'], d['use_state'], d['use_attn'],
                                     d['kernel_size'], d['n_filters'],

@@ -90,13 +90,17 @@ class GraphEncoder(nn.Module):
         self.device = device
         self.hidden_size = config.hidden_dim
         self.lstm_hidden_size = config.lstm_hidden_dim
+        self.use_elmo = config.use_elmo
         self.use_char = config.use_char
         self.use_pos = config.use_pos
         self.use_word = config.use_word
         self.use_distance = config.use_distance
         self.use_state = config.use_state
 
-        input_size = config.contextual_word_embedding_dim
+        input_size = 0
+        assert self.use_elmo != self.use_word
+        if self.use_elmo:
+            input_size += config.contextual_word_embedding_dim
         if self.use_word:
             input_size += config.word_embedding_dim
         if self.use_char:
@@ -224,7 +228,10 @@ class GraphEncoder(nn.Module):
         pos_embedded = self.pos_embedding(pos_ids_tensor)
         # input representation
         # TODO: refactor
-        input_embed = elmo_tensor
+        if self.use_elmo:
+            input_embed = elmo_tensor
+        if self.use_word:
+            input_embed = word_embedded
         if self.use_char:
             input_embed = torch.cat([input_embed, conv_char_embedded], dim=-1)
         if self.use_pos:

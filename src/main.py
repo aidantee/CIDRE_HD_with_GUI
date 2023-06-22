@@ -1,4 +1,6 @@
 import argparse
+import logging
+
 from corpus.cdr_corpus import CDRCorpus
 from config.cdr_config import CDRConfig
 from dataset.utils import get_cdr_dataset, concat_dataset, split_train_test
@@ -12,6 +14,21 @@ import re
 from datetime import datetime
 import os
 import json
+
+
+def get_logger(filename: str):
+    logger = logging.getLogger("TRAIN")
+    logger.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s %(name)s %(filename)s %(funcName)s %(levelname)s %(module)s %(message)s')
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(logging.DEBUG)
+    stream_handler.setFormatter(formatter)
+    file_handler = logging.FileHandler(filename=filename)
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+    logger.addHandler(file_handler)
+    return logger
 
 
 def seed_all(seed):
@@ -48,13 +65,13 @@ if __name__ == "__main__":
 
     # config.model.use_ner = args.use_ner
     config.model.encoder.use_state = args.use_state
-    # config.model.encoder.use_pos = args.use_pos
-    # config.model.encoder.use_char = args.use_char
-    # config.model.encoder.use_distance = args.use_distance
-
-    print(config)
+    config.model.encoder.use_pos = args.use_pos
+    config.model.encoder.use_char = args.use_char
+    config.model.encoder.use_distance = args.use_distance
 
     experiment_dir = setup_experiment_dir(config)
+    logger = get_logger(os.path.join(experiment_dir, "log.txt"))
+    logger.info(config)
     corpus = CDRCorpus(config)
     corpus.load_all_vocabs(config.data.saved_data_path)
     train_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "train")
@@ -62,7 +79,7 @@ if __name__ == "__main__":
     test_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "test")
     device = "cuda"
     # device = "cpu"
-    trainer = Trainer(corpus, config, device, experiment_dir)
+    trainer = Trainer(corpus, config, device, experiment_dir, logger)
 
     # if args.train_inter:
     #     collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
@@ -85,6 +102,7 @@ if __name__ == "__main__":
     #         outfile.write("\n\nRESULT")
     #         outfile.write(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
     #                       f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}" + "\n")
+    # trainer = Trainer(corpus, config, device, experiment_dir, logger)
     if args.concat:
         collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
         train_dataset = concat_dataset([train_dataset, dev_dataset])
@@ -96,12 +114,8 @@ if __name__ == "__main__":
         )
         trainer.train(train_loader)
         re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
-        print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
-              f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
-        with open(os.path.join(experiment_dir, "result.txt"), "a") as outfile:
-            outfile.write("\n\nRESULT")
-            outfile.write(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
-                          f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}" + "\n")
+        logger.info(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+                    f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
     else:
         collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
         train_loader = DataLoader(

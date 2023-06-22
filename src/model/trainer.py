@@ -14,9 +14,13 @@ from config.cdr_config import CDRConfig
 from model.cdr_model import GraphEncoder, GraphStateLSTM
 from utils.metrics import compute_rel_f1, compute_NER_f1_macro, decode_ner, compute_results
 
+WORD2VEC_PATH = "./data/word_embedding.pt"
+
 
 class Trainer:
-    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, experiment_dir: str, pos_weight: float = 1):
+    def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, experiment_dir: str, logger,
+                 pos_weight: float = 1):
+        self.logger = logger
         self.experiment_dir = experiment_dir
         self.corpus = corpus
         self.config = config
@@ -28,8 +32,13 @@ class Trainer:
             config.model,
             device=device
         )
+        if device == "cuda":
+            self.word_embedding_weight = torch.load(WORD2VEC_PATH, map_location=torch.device("cuda"))
+        else:
+            self.word_embedding_weight = torch.load(WORD2VEC_PATH, map_location=torch.device("cpu"))
+        self.model.encoder.word_embedding.from_pretrained(self.word_embedding_weight, freeze=True)
         num_param = sum([param.numel() for param in self.model.parameters()])
-        print(f"Num model param {num_param}")
+        self.logger.info(f"Num model param {num_param}")
         self.device = device
         self.weight_label = torch.Tensor([1, pos_weight])
         self.optimizer = optim.AdamW(self.model.parameters(), lr=config.train.optimizer.lr, weight_decay=0.001)
@@ -52,7 +61,7 @@ class Trainer:
         ner_pred_list = []
         elapsed_times = []
         with torch.no_grad():
-            print("Start evaluate")
+            self.logger.info("Start evaluate")
             for batch in tqdm(dataloader):
                 if self.device == "cuda":
                     start = time.time()
@@ -84,11 +93,11 @@ class Trainer:
                     elapsed_times.append(end - start)
 
         elapsed_times = np.array(elapsed_times)
-        print(f"Inference time: \n"
-              f"Min: {np.min(elapsed_times)}\n"
-              f"Max: {np.max(elapsed_times)}\n"
-              f"Mean: {np.mean(elapsed_times)}\n"
-              f"Median: {np.median(elapsed_times)}\n")
+        self.logger.info(f"Inference time: \n"
+                         f"Min: {np.min(elapsed_times)}\n"
+                         f"Max: {np.max(elapsed_times)}\n"
+                         f"Mean: {np.mean(elapsed_times)}\n"
+                         f"Median: {np.median(elapsed_times)}\n")
         ner_f1 = compute_NER_f1_macro(ner_pred_list, ner_target_list)
         re_precision, re_recall, re_f1, _ = compute_results(predict_list, target_list)
         return np.mean(re_losses), np.mean(ner_losses), ner_f1, re_precision, re_recall, re_f1
@@ -129,22 +138,22 @@ class Trainer:
 
                 train_step += 1
                 if train_step % self.log_interval == 0:
-                    print(f"Epoch {i} step {train_step}")
-                    print(f"Re loss: {np.mean(train_interval_re_loss)}")
-                    print(f"Ner loss: {np.mean(train_interval_ner_loss)}")
+                    self.logger.info(f"Epoch {i} step {train_step}")
+                    self.logger.info(f"Re loss: {np.mean(train_interval_re_loss)}")
+                    self.logger.info(f"Ner loss: {np.mean(train_interval_ner_loss)}")
                     train_interval_re_loss = []
                     train_interval_ner_loss = []
 
             self.scheduler.step()
-            print(f"Finish epoch {i}")
-            print(f"Re loss: {np.mean(train_re_loss)}")
-            print(f"Ner loss: {np.mean(train_ner_loss)}")
+            self.logger.info(f"Finish epoch {i}")
+            self.logger.info(f"Re loss: {np.mean(train_re_loss)}")
+            self.logger.info(f"Ner loss: {np.mean(train_ner_loss)}")
             train_re_loss = []
             train_ner_loss = []
             if dev_loader is not None:
                 re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = self.evaluate(dev_loader)
-                print(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
-                      f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
+                self.logger.info(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+                                 f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
 
     def save_model(self):
         ckpt = {
