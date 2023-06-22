@@ -40,6 +40,7 @@
             "hidden_dim": 150,
             "in_attn_heads": 2,
             "out_attn_heads": 5,
+            "use_elmo": true,
             "use_char": true,
             "use_pos": true,
             "use_word": false,

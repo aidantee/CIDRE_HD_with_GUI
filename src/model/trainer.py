@@ -14,6 +14,8 @@ from config.cdr_config import CDRConfig
 from model.cdr_model import GraphEncoder, GraphStateLSTM
 from utils.metrics import compute_rel_f1, compute_NER_f1_macro, decode_ner, compute_results
 
+WORD2VEC_PATH = "./data/word_embedding.pt"
+
 
 class Trainer:
     def __init__(self, corpus: CDRCorpus, config: CDRConfig, device: str, experiment_dir: str, logger,
@@ -30,6 +32,11 @@ class Trainer:
             config.model,
             device=device
         )
+        if device == "cuda":
+            self.word_embedding_weight = torch.load(WORD2VEC_PATH, map_location=torch.device("cuda"))
+        else:
+            self.word_embedding_weight = torch.load(WORD2VEC_PATH, map_location=torch.device("cpu"))
+        self.model.encoder.word_embedding.from_pretrained(self.word_embedding_weight, freeze=True)
         num_param = sum([param.numel() for param in self.model.parameters()])
         self.logger.info(f"Num model param {num_param}")
         self.device = device
