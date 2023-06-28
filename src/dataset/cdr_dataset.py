@@ -13,11 +13,13 @@ class CDRDataset(Dataset):
             all_char_ids,
             all_entity_mapping,
             all_ner_label_ids,
-            labels
+            labels,
+            train_inter
     ):
 
         super(CDRDataset, self).__init__()
 
+        self.train_inter = train_inter
         self.all_doc_token_ids = all_doc_token_ids
 
         self.all_in_nodes_idx = all_in_nodes_idx
@@ -45,17 +47,22 @@ class CDRDataset(Dataset):
         else:
             label_ids = 0
 
-        token_ids = self.all_doc_token_ids[pud_id]
-        in_nodes_idx = self.all_in_nodes_idx[pud_id]
-        in_edge_label_ids = self.all_in_edge_label_ids[pud_id]
-        out_nodes_idx = self.all_out_nodes_idx[pud_id]
-        out_edge_label_ids = self.all_out_edge_label_ids[pud_id]
-        pos_ids = self.all_pos_ids[pud_id]
-        char_ids = self.all_char_ids[pud_id]
+        if self.train_inter:
+            key = label
+        else:
+            key = pud_id
+
+        token_ids = self.all_doc_token_ids[key]
+        in_nodes_idx = self.all_in_nodes_idx[key]
+        in_edge_label_ids = self.all_in_edge_label_ids[key]
+        out_nodes_idx = self.all_out_nodes_idx[key]
+        out_edge_label_ids = self.all_out_edge_label_ids[key]
+        pos_ids = self.all_pos_ids[key]
+        char_ids = self.all_char_ids[key]
         assert len(char_ids) == len(pos_ids) == len(token_ids)
-        chem_entity_map = self.all_entity_mapping[pud_id][c_id]
-        dis_entity_map = self.all_entity_mapping[pud_id][d_id]
-        ner_label_ids = self.all_ner_label_ids[pud_id]
+        chem_entity_map = self.all_entity_mapping[key][c_id]
+        dis_entity_map = self.all_entity_mapping[key][d_id]
+        ner_label_ids = self.all_ner_label_ids[key]
         return (
             token_ids,
             in_nodes_idx,

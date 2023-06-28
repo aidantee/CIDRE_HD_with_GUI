@@ -57,33 +57,35 @@ if __name__ == "__main__":
     parser.add_argument("--use_state", action="store_true")
     # parser.add_argument("--use_pos", action="store_true")
     # parser.add_argument("--use_char", action="store_true")
-    # parser.add_argument("--use_distance", action="store_true")
-    # parser.add_argument("--train_inter", action="store_true")
+    parser.add_argument("--use_distance", action="store_true")
+    parser.add_argument("--train_inter", action="store_true")
     args = parser.parse_args()
     seed_all(args.seed)
     config = CDRConfig.from_json(args.config)
 
     # config.model.use_ner = args.use_ner
     config.model.encoder.use_state = args.use_state
-    config.model.encoder.use_pos = args.use_pos
-    config.model.encoder.use_char = args.use_char
+    # config.model.encoder.use_pos = args.use_pos
+    # config.model.encoder.use_char = args.use_char
     config.model.encoder.use_distance = args.use_distance
+
+    train_inter = args.train_inter
 
     experiment_dir = setup_experiment_dir(config)
     logger = get_logger(os.path.join(experiment_dir, "log.txt"))
     logger.info(config)
     corpus = CDRCorpus(config)
     corpus.load_all_vocabs(config.data.saved_data_path)
-    train_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "train")
-    dev_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "dev")
-    test_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "test")
+    train_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "train", train_inter)
+    dev_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "dev", train_inter)
+    test_dataset = get_cdr_dataset(corpus, config.data.saved_data_path, "test", train_inter)
     device = "cuda"
     # device = "cpu"
     trainer = Trainer(corpus, config, device, experiment_dir, logger)
 
     # if args.train_inter:
     #     collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
-    #     dataset = concat_dataset([train_dataset, dev_dataset, test_dataset])
+    #     dataset = concat_dataset([train_dataset, dev_dataset])
     #     with open("./train_pud_id.txt", "r") as infile:
     #         train_pud_ids = infile.readlines()
     #     train_pud_ids = [idx.strip() for idx in train_pud_ids]
@@ -107,10 +109,12 @@ if __name__ == "__main__":
         collator = Collator(corpus.word_vocab, corpus.pos_vocab, corpus.char_vocab, corpus.rel_vocab)
         train_dataset = concat_dataset([train_dataset, dev_dataset])
         train_loader = DataLoader(
-            train_dataset, batch_size=config.train.batch_size, shuffle=True, collate_fn=collator.collate
+            train_dataset, batch_size=config.train.batch_size, shuffle=True, collate_fn=collator.collate, 
+            pin_memory=True,
         )
         test_loader = DataLoader(
-            test_dataset, batch_size=config.train.batch_size, shuffle=False, collate_fn=collator.collate
+            test_dataset, batch_size=config.train.batch_size, shuffle=False, collate_fn=collator.collate,
+            pin_memory=True,
         )
         trainer.train(train_loader)
         re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
@@ -125,4 +129,4 @@ if __name__ == "__main__":
             dev_dataset, batch_size=config.train.batch_size, shuffle=True, collate_fn=collator.collate
         )
         trainer.train(train_loader, dev_loader)
-    trainer.save_model()
+    # trainer.save_model()

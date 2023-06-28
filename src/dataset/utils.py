@@ -117,7 +117,7 @@ def pad_tensor(list_tensor, batch_length):
     return torch.stack(list_padded_tensor, dim=0).detach()
 
 
-def get_cdr_dataset(corpus: CDRCorpus, saved_folder_path: str, data_type: str) -> CDRDataset:
+def get_cdr_dataset(corpus: CDRCorpus, saved_folder_path: str, data_type: str, train_inter) -> CDRDataset:
     (
         all_doc_token_ids,
         all_in_nodes_idx,
@@ -139,11 +139,13 @@ def get_cdr_dataset(corpus: CDRCorpus, saved_folder_path: str, data_type: str) -
                          all_doc_char_ids,
                          all_entity_mapping,
                          all_ner_label_ids,
-                         all_labels)
+                         all_labels,
+                         train_inter)
     return dataset
 
 
 def concat_dataset(datasets: List[CDRDataset]) -> CDRDataset:
+    train_inter = datasets[0].train_inter
     res = CDRDataset(
         {k: v for dataset in datasets for k, v in dataset.all_doc_token_ids.items()},
         {k: v for dataset in datasets for k, v in dataset.all_in_nodes_idx.items()},
@@ -154,7 +156,8 @@ def concat_dataset(datasets: List[CDRDataset]) -> CDRDataset:
         {k: v for dataset in datasets for k, v in dataset.all_char_ids.items()},
         {k: v for dataset in datasets for k, v in dataset.all_entity_mapping.items()},
         {k: v for dataset in datasets for k, v in dataset.all_ner_label_ids.items()},
-        [label for dataset in datasets for label in dataset.labels]
+        [label for dataset in datasets for label in dataset.labels],
+        train_inter
     )
     return res
 

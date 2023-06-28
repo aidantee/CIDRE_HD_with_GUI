@@ -865,7 +865,6 @@ class CDRCorpus:
         )
 
     def process_inter_dataset(self, file_path, mesh_path=None, use_log=True):
-
         label_annotations, doc_annotations = self.read_raw_dataset(file_path)
         temp = copy.deepcopy(doc_annotations)
         label_docs = defaultdict(list)
@@ -1003,10 +1002,10 @@ class CDRCorpus:
                         chem_mention, dis_mention = pair_mentions
 
                         if (
-                                not self.is_sent_contains_more_than_2_mentions_of_different_entity_type(
-                                    sent, chem_mention, dis_mention
-                                )
-                                and not is_sent_contains_another_mention_pair
+                            not self.is_sent_contains_more_than_2_mentions_of_different_entity_type(
+                                sent, chem_mention, dis_mention
+                            )
+                            and not is_sent_contains_another_mention_pair
                         ):
                             if self.is_in_sent(sent, chem_mention) or self.is_in_sent(sent, dis_mention):
                                 if self.is_in_sent(sent, chem_mention):
@@ -1018,15 +1017,15 @@ class CDRCorpus:
                                     # print(sent.text, chem_mention, dis_mention)
                                     # do some thing
                                 if (
-                                        self.is_in_sent(sent, chem_mention)
-                                        and chem_mention not in check_sents[sent_idx]["en_annos"]
+                                    self.is_in_sent(sent, chem_mention)
+                                    and chem_mention not in check_sents[sent_idx]["en_annos"]
                                 ):
                                     check_sents[sent_idx]["en_annos"].append(chem_mention)
                                     chem_count += 1
 
                                 if (
-                                        self.is_in_sent(sent, dis_mention)
-                                        and dis_mention not in check_sents[sent_idx]["en_annos"]
+                                    self.is_in_sent(sent, dis_mention)
+                                    and dis_mention not in check_sents[sent_idx]["en_annos"]
                                 ):
                                     check_sents[sent_idx]["en_annos"].append(dis_mention)
                                     dis_count += 1
@@ -1120,7 +1119,7 @@ class CDRCorpus:
                                 key = (start, end, mention, t, kg_id)
                                 entity_mapping[key] = []
 
-                                for token, adjacen in in_doc_adjacency_dict.items():
+                                for token, _ in in_doc_adjacency_dict.items():
                                     token_start = token.idx
                                     token_end = token_start + len(token)
 
@@ -1129,13 +1128,13 @@ class CDRCorpus:
                                     if token_start >= start and token_end <= end:
                                         entity_mapping[key].append(token)
                                     # some annotations which form abc-#mention-abcxyz, so we extra token spans to a predefined threshhold.
-                                    elif (
-                                            token_start >= start - offset_span and token_end <= end + offset_span
-                                    ) and mention in token.text:
+
+                                for token, _ in in_doc_adjacency_dict.items():
+                                    token_start = token.idx
+                                    token_end = token_start + len(token)
+                                    if token_start <= start and token_end >= end and mention in token.text:
                                         entity_mapping[key].append(token)
-                                    # hard code for some specific mention
-                                    elif token.text in SOME_SPECIFIC_MENTIONS:
-                                        entity_mapping[key].append(token)
+                                        break
                                 try:
                                     assert entity_mapping[key] != []
                                 except:
@@ -1162,9 +1161,9 @@ class CDRCorpus:
                     # label = ('17111419', 'D002125', 'D006996', 'NULL')
                     # sent_label = (label[0], label[1], label[2], label[3], sent_idx)
 
-                    inter_in_adjacency_dict[label[0]] = in_doc_adjacency_dict
-                    inter_out_adjacency_dict[label[0]] = out_doc_adjacency_dict
-                    inter_entity_mapping_dict[label[0]] = entity_mapping
+                    inter_in_adjacency_dict[label] = in_doc_adjacency_dict
+                    inter_out_adjacency_dict[label] = out_doc_adjacency_dict
+                    inter_entity_mapping_dict[label] = entity_mapping
 
                     # abstract_label = sent_label[:-1]
                     # intra_abstract_labels.append(abstract_label)
