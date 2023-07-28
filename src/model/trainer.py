@@ -51,7 +51,7 @@ class Trainer:
         # self.model_name = f"model_modeltype_{str(config.model_type)}_char_{str(config.use_char)}_pos_{str(config.use_pos)}_attn_{str(config.use_attn)}_ner_{str(config.use_ner)}_state_{str(config.use_state)}_distance_{str(config.distance_thresh)}.pth"
         self.log_interval = 100
 
-    def evaluate(self, dataloader: DataLoader):
+    def evaluate(self, dataloader: DataLoader, threshold: float = 0.5):
         self.model.eval()
         re_losses = []
         ner_losses = []
@@ -73,7 +73,10 @@ class Trainer:
                     re_loss = self.re_criterion(re_logits, labels)
                     ner_loss = self.ner_criterion(torch.permute(ner_logits, (0, 2, 1)), ner_labels)
                     total_loss = re_loss + ner_loss
-                    predict_classes = torch.argmax(re_logits, dim=-1).cpu().data.numpy().tolist()
+                    re_logits = torch.softmax(re_logits, dim=-1)
+                    predict_classes = [0 if float(sample[0]) > threshold else 1 for sample in re_logits]
+                    # print(re_logits)
+                    # print(predict_classes)
                     target_classes = labels.cpu().data.numpy().tolist()
                     predict_list.extend(predict_classes)
                     target_list.extend(target_classes)

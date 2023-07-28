@@ -53,6 +53,7 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="./config.json")
     parser.add_argument("--seed", default=22, type=int)
     parser.add_argument("--concat", action="store_true")
+    parser.add_argument("--predict_threshold", default=0.7, type=float)
     args = parser.parse_args()
     seed_all(args.seed)
     config = CDRConfig.from_json(args.config)
@@ -77,8 +78,12 @@ if __name__ == "__main__":
         test_loader = DataLoader(
             test_dataset, batch_size=config.train.batch_size, shuffle=False, collate_fn=collator.collate
         )
+        # re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader, 0.7)
+        # logger.info(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
+        #             f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
         trainer.train(train_loader)
-        re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader)
+        re_loss, ner_loss, ner_f1, re_precision, re_recall, re_f1 = trainer.evaluate(test_loader,
+                                                                                     args.predict_threshold)
         logger.info(f"Re loss: {re_loss}\nNer loss: {ner_loss}\nNer f1: {ner_f1}\n"
                     f"Re precision: {re_precision}\nRe recall: {re_recall}\nRe f1: {re_f1}")
     else:
