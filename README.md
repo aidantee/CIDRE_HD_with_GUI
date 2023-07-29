@@ -6,7 +6,8 @@
 We address the problem of Document-Level N-ary Relation Extraction with a graph-based Long-short term memory network that utilizes a unified dependency-structure of a document, combined with state of the art pre-trained contextual embedding for the Biomedical Domain.
 
 Our model was trained in a end-to-end manner and use whole information from all mention pairs in the document to make the final prediction
-Require python 3.8.10
+**Require python 3.8.10**
+
 <img src="glstm.png" alt="drawing" width="500"/>
 
 ### Dataset
