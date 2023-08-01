@@ -27,6 +27,11 @@ All configurations of our model was decribed in the config.json file. To train o
     python build_data.py
     python main.py --concat --seed 23534
 ```
+### Start UI service
+```
+    cd src
+    gradio serve.py
+```
 
 [//]: # (### Result)
 
