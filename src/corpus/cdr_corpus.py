@@ -810,3 +810,68 @@ class CDRCorpus:
             all_enitty_mapping,
             all_ner_labels,
         )
+
+    def convert_one_doc_to_features(self, lines: List[str]):
+        pud_id = None
+        title = None
+        abstract = None
+        entity_annotations = []
+        for line in lines:
+            if "|t|" in line:
+                pud_id, title = line.strip().split("|t|")
+            elif "|a|" in line:
+                pub_id, abstract = line.strip().split("|a|")
+            else:
+                splits = line.strip().split("\t")
+                if len(splits) == 6:
+                    _, start, end, mention, label, kg_ids = splits
+                    for kg_id in kg_ids.split("|"):
+                        entity_annotations.append([int(start), int(end), mention, label, kg_id])
+                elif len(splits) == 7:
+                    _, start, end, mention, label, kg_ids, split_mentions = splits
+                    for kg_id in kg_ids.split("|"):
+                        entity_annotations.append([int(start), int(end), mention, label, kg_id])
+        (
+            chem_dis_pair_ids,
+            in_doc_adjacency_dict,
+            out_doc_adjacency_dict,
+            entity_mapping,
+            _,
+        ) = self.preprocess_one_doc(pud_id, title, abstract, entity_annotations)
+        doc_tokens = list(in_doc_adjacency_dict.keys())
+        doc_token_texts = [tok.text for tok in doc_tokens]
+        (
+            doc_in_nodes_idx,
+            doc_out_nodes_idx,
+            doc_in_edge_label_ids,
+            doc_out_edge_label_ids,
+            doc_poses_ids,
+            doc_char_ids,
+            max_doc_node_in,
+            max_doc_node_out,
+            max_doc_char_length,
+        ) = self.create_in_out_features_for_doc(
+            in_doc_adjacency_dict, out_doc_adjacency_dict, doc_tokens, self.rel_vocab, self.pos_vocab, self.char_vocab
+        )
+        doc_token_ids = self.convert_tokens_to_ids(doc_token_texts, self.word_vocab)
+        entity_to_tokens = defaultdict(list)
+        for key, mapping_tokens in entity_mapping.items():
+            _, _, _, en_type, en_id = key
+            list_idx_mention = []
+            for token in mapping_tokens:
+                list_idx_mention.append(doc_tokens.index(token))
+            assert len(list_idx_mention) != 0
+            entity_to_tokens[en_id].append(list_idx_mention)
+            assert len(entity_to_tokens[en_id]) != 0
+        features = [
+            doc_token_ids,
+            doc_in_nodes_idx,
+            doc_out_nodes_idx,
+            doc_in_edge_label_ids,
+            doc_out_edge_label_ids,
+            doc_poses_ids,
+            doc_char_ids,
+            entity_to_tokens,
+            chem_dis_pair_ids,
+        ]
+        return features
