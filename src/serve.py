@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import gradio as gr
 import torch
@@ -8,15 +9,21 @@ from corpus.cdr_corpus import CDRCorpus
 from dataset.collator import Collator
 from model.cdr_model import GraphStateLSTM
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument("--config", default=)
-# parser.add_argument("--predict_threshold", default=0.7, type=float)
-# parser.add_argument('--model_ckpt_path', type=str, default='checkpoints/cdr_2023_07_28_23_20_14/model.pth')
-# args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument("--config", default='./config.json')
+parser.add_argument("--predict_threshold", default=0.7, type=float)
+parser.add_argument('--model_ckpt_path', type=str, default='checkpoints/cdr_2023_07_28_23_20_14/model.pth')
+args = parser.parse_args()
 
-config_path = "./config.json"
-predict_threshold = 0.7
-model_ckpt_path = 'checkpoints/cdr_2023_07_28_23_20_14/model.pth'
+# config_path = "./config.json"
+# predict_threshold = 0.7
+# model_ckpt_path = 'checkpoints/cdr_2023_07_28_23_20_14/model.pth'
+
+config_path = os.getenv('CONFIG_PATH', './config.json')
+predict_threshold = float(os.getenv('PREDICT_THRESHOLD', 0.7))
+model_ckpt_path = os.getenv('MODEL_CKPT_PATH', None)
+
+assert model_ckpt_path is not None, "environment variable MODEL_CKPT_PATH must be exported"
 
 config = CDRConfig.from_json(config_path)
 corpus = CDRCorpus(config)

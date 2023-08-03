@@ -28,8 +28,15 @@ All configurations of our model was decribed in the config.json file. To train o
     python main.py --concat --seed 23534
 ```
 ### Start UI service
+You must specified path of model checkpoint  
+Default:
+- CONFIG_PATH=./config.json
+- PREDICT_THRESHOLD=0.7
 ```
     cd src
+    export CONFIG_PATH=PATH_OF_CONFIG_FILE 
+    export PREDICT_THRESHOLD=THRESHOLD
+    export MODEL_CKPT_PATH=PATH_OF_MODEL_CHECKPOINT
     gradio serve.py
 ```
 
