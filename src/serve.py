@@ -9,11 +9,11 @@ from corpus.cdr_corpus import CDRCorpus
 from dataset.collator import Collator
 from model.cdr_model import GraphStateLSTM
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--config", default='./config.json')
-parser.add_argument("--predict_threshold", default=0.7, type=float)
-parser.add_argument('--model_ckpt_path', type=str, default='checkpoints/cdr_2023_07_28_23_20_14/model.pth')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("--config", default='./config.json')
+# parser.add_argument("--predict_threshold", default=0.7, type=float)
+# parser.add_argument('--model_ckpt_path', type=str, default='checkpoints/cdr_2023_07_28_23_20_14/model.pth')
+# args = parser.parse_args()
 
 # config_path = "./config.json"
 # predict_threshold = 0.7
@@ -39,6 +39,7 @@ model = GraphStateLSTM(
 )
 model_state_dict = torch.load(model_ckpt_path)['model']
 print(model.load_state_dict(model_state_dict))
+model.eval()
 collator = Collator(corpus.word_vocab, corpus.pos_vocab,
                     corpus.char_vocab, corpus.rel_vocab)
 
@@ -69,7 +70,8 @@ def relation_extraction(input_docs: str):
         lines = doc.split('\n')
         features, pub_id = corpus.convert_one_doc_to_features(lines)
         batch_inputs = convert_features_to_model_inputs(features)
-        _, outputs = model(batch_inputs)
+        with torch.no_grad():
+            _, outputs = model(batch_inputs)
         outputs = torch.softmax(outputs, dim=-1)
         predictions = [0 if float(logit[0]) > predict_threshold else 1 for logit in outputs]
         chem_dis_pair_ids = features[-1]
