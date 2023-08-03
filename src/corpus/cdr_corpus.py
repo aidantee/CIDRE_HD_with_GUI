@@ -874,4 +874,4 @@ class CDRCorpus:
             entity_to_tokens,
             chem_dis_pair_ids,
         ]
-        return features
+        return features, pub_id

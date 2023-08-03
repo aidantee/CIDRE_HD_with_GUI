@@ -55,17 +55,22 @@ def convert_features_to_model_inputs(features):
     return batch_inputs
 
 
-def relation_extraction(doc: str):
-    lines = doc.split('\n')
-    features = corpus.convert_one_doc_to_features(lines)
-    batch_inputs = convert_features_to_model_inputs(features)
-    _, outputs = model(batch_inputs)
-    outputs = torch.softmax(outputs, dim=-1)
-    predictions = [0 if float(logit[0]) > predict_threshold else 1 for logit in outputs]
-    chem_dis_pair_ids = features[-1]
-    res = f'chem_id\t\tdis_id\t\tcid_relation\n'
-    for idx, (chem_id, dis_id) in enumerate(chem_dis_pair_ids):
-        res += f'{chem_id}\t\t{dis_id}\t\t{predictions[idx]}\n'
+def relation_extraction(input_docs: str):
+    docs = input_docs.split('\n\n')
+    res = ''
+    for doc in docs:
+        lines = doc.split('\n')
+        features, pub_id = corpus.convert_one_doc_to_features(lines)
+        batch_inputs = convert_features_to_model_inputs(features)
+        _, outputs = model(batch_inputs)
+        outputs = torch.softmax(outputs, dim=-1)
+        predictions = [0 if float(logit[0]) > predict_threshold else 1 for logit in outputs]
+        chem_dis_pair_ids = features[-1]
+        res += f'{pub_id}\n'
+        res += f'chem_id\tdis_id\tcid_relation\n'
+        for idx, (chem_id, dis_id) in enumerate(chem_dis_pair_ids):
+            res += f'{chem_id}\t{dis_id}\t{predictions[idx]}\n'
+        res += '\n'
     return res
 
 
