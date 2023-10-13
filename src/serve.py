@@ -8,6 +8,7 @@ from config.cdr_config import CDRConfig
 from corpus.cdr_corpus import CDRCorpus
 from dataset.collator import Collator
 from model.cdr_model import GraphStateLSTM
+import torch
 
 # parser = argparse.ArgumentParser()
 # parser.add_argument("--config", default='./config.json')
@@ -22,13 +23,25 @@ from model.cdr_model import GraphStateLSTM
 config_path = os.getenv('CONFIG_PATH', './config.json')
 predict_threshold = float(os.getenv('PREDICT_THRESHOLD', 0.7))
 model_ckpt_path = os.getenv('MODEL_CKPT_PATH', None)
+use_cpu = os.getenv('USE_CPU', None)
+
+assert use_cpu is None or use_cpu == 'TRUE' or use_cpu == 'FALSE'
+if use_cpu is None:
+    use_cpu = True
+else:
+    if use_cpu == 'TRUE':
+        use_cpu = True
+    else:
+        use_cpu = False
 
 assert model_ckpt_path is not None, "environment variable MODEL_CKPT_PATH must be exported"
 
 config = CDRConfig.from_json(config_path)
 corpus = CDRCorpus(config)
 corpus.load_all_vocabs(config.data.saved_data_path)
-device = 'cpu'
+
+device = 'cpu' if use_cpu else 'cuda'
+
 model = GraphStateLSTM(
     len(corpus.rel_vocab),
     len(corpus.pos_vocab),
@@ -37,7 +50,12 @@ model = GraphStateLSTM(
     config.model,
     device=device
 )
-model_state_dict = torch.load(model_ckpt_path)['model']
+
+if use_cpu:
+    model_state_dict = torch.load(model_ckpt_path, map_location=torch.device('cpu'))['model']
+else:
+    model = model.to(torch.device(device))
+    model_state_dict = torch.load(model_ckpt_path)['model']
 print(model.load_state_dict(model_state_dict))
 model.eval()
 collator = Collator(corpus.word_vocab, corpus.pos_vocab,
@@ -70,6 +88,8 @@ def relation_extraction(input_docs: str):
         lines = doc.split('\n')
         features, pub_id = corpus.convert_one_doc_to_features(lines)
         batch_inputs = convert_features_to_model_inputs(features)
+        if device == 'cuda':
+            batch_inputs = [elem.cuda() if isinstance(elem, torch.Tensor) else elem for elem in batch_inputs]
         with torch.no_grad():
             _, outputs = model(batch_inputs)
         outputs = torch.softmax(outputs, dim=-1)
