@@ -37,6 +37,7 @@ Default:
     export CONFIG_PATH=PATH_OF_CONFIG_FILE 
     export PREDICT_THRESHOLD=THRESHOLD
     export MODEL_CKPT_PATH=PATH_OF_MODEL_CHECKPOINT
+    export USE_CPU=TRUE/FALSE
     gradio serve.py
 ```
 
